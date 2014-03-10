@@ -1,0 +1,30 @@
+{
+  "name": "pat-redactor",
+  "version": "1.0.0",
+  "title": "Patternslib plugin for redactor",
+  "licences": [
+    {
+      "type": "BSD",
+      "URL": "LICENSE"
+    }
+  ],
+  "devDependencies": {
+    "bower": "latest",
+    "requirejs": "",
+    "gulp": "^3.5.5",
+    "gulp-concat": "^2.1.7",
+    "gulp-uglify": "^0.2.1",
+    "gulp-bower": "0.0.3",
+    "gulp-bower-files": "^0.1.11",
+    "streamqueue": "0.0.5",
+    "gulp-rename": "^1.2.0"
+  },
+  "homepage": "https://gitub.com/Patternslib/pat-redactor",
+  "maintainers": [
+    {
+      "name": "Wichert Akkerman",
+      "email": "wichert@wiggy.net",
+      "url": "http://www.wiggy.net"
+    }
+  ]
+}
