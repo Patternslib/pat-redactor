@@ -14,17 +14,15 @@
     }
 }(this, function($, registry, Parser) {
     var parser = new Parser("packery");
-
     var redactor = {
         name: "redactor",
         trigger: ".pat-redactor",
 
         init: function($el, opts) {
-            return $el.each(function() {
 
+            return $el.each(function() {
             });
         }
-
     };
 
     registry.register(redactor);
