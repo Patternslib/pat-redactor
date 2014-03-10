@@ -19,9 +19,7 @@
         trigger: ".pat-redactor",
 
         init: function($el, opts) {
-
-            return $el.each(function() {
-            });
+            $el.redactor();
         }
     };
 
