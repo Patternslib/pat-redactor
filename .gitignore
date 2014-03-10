@@ -1,1 +1,3 @@
 redactor/
+node_modules/
+dist/
