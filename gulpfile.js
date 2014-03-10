@@ -12,7 +12,7 @@ gulp.task("bower", function() {
 
 gulp.task("default", function() {
     return streamqueue({objectMode: true},
-	bower_files(),
+	// bower_files(),
 	gulp.src("src/*.js")
     )
     .pipe(concat("bundle.js"))
