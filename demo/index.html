@@ -8,12 +8,21 @@
 <body>
 
   <h1>Redactor pattern demo</h1>
-  <textarea id="content" class="pat-redactor"
+
+  <h2>Standard</h2>
+  <textarea class="pat-redactor"
   	data-redactor-file-upload="/files"
   	data-redactor-image-upload="/images">
   </textarea>
 
-  <textarea id="content2" class="pat-redactor"
+  <h2>Air mode</h2>
+  <textarea id="content" class="pat-redactor"
+  	data-redactor-air data-redactor-air-buttons="formatting, bold italic">
+  	Hello world
+  </textarea>
+
+  <h2>Custom buttons</h2>
+  <textarea id="content3" class="pat-redactor"
   	data-redactor-allowed-tags="p h2"
   	data-redactor-buttons="html, formatting, bold, italic">
   </textarea>

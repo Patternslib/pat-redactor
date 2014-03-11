@@ -43,6 +43,16 @@
                 options.imageUpload = data.redactorImageUpload;
             }
 
+            // Air
+            if (data.redactorAir!==undefined) {
+                options.air = true;
+                if (data.redactorAirButtons) {
+                    options.airButtons = data.redactorAirButtons.split(/[ ,]+/);
+                }
+            }
+
+
+            console.log(data);
             $el.redactor(options);
         }
     };
