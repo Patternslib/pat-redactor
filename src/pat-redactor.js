@@ -27,6 +27,15 @@
                 buttons = buttons.split(/[ ,]+/);
                 options.buttons = buttons;
             }
+
+            // Upload paths
+            if (data.redactorFileUpload) {
+                options.fileUpload = data.redactorFileUpload;
+            }
+            if (data.redactorImageUpload) {
+                options.imageUpload = data.redactorImageUpload;
+            }
+
             $el.redactor(options);
         }
     };
