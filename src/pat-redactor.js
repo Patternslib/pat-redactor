@@ -19,7 +19,8 @@
     parser.add_argument('buttons',
         ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule', 'table'],
         ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
-
+    parser.add_argument('allowed-tags', [], [], true);
+    parser.add_argument('denied-tags', [], [], true);
 
     var redactor = {
         name: 'redactor',
@@ -42,12 +43,11 @@
 
             options.buttons = poptions.buttons;
 
-            // // Allowed, denied tags
-            // if (data.redactorAllowedTags) {
-            //     options.allowedTags = data.redactorAllowedTags.split(/[ ,]+/);
-            // } else if (data.redactorDeniedTags) {
-            //     options.deniedTags = data.redactorDeniedTags.split(/[ ,]+/);
-            // }
+            if (poptions.allowedTags.length>0) {
+                options.allowedTags = poptions.allowedTags;
+            } else if (poptions.denedTags.length>0) {
+                options.deniedTags = poptions.deniedTags;
+            }
 
             // // Upload paths
             // if (data.redactorFileUpload) {
