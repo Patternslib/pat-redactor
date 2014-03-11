@@ -13,46 +13,50 @@
         factory(root.jQuery, root.patterns, root.patterns.Parser);
     }
 }(this, function($, registry, Parser) {
-    var parser = new Parser("packery");
+    var parser = new Parser('redactor');
+
+    parser.add_argument('toolbar-type', 'standard', ['standard', 'fixed', 'air']);
+    parser.add_argument('buttons',
+        ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule', 'table'],
+        ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
+
 
     var redactor = {
-        name: "redactor",
-        trigger: ".pat-redactor",
+        name: 'redactor',
+        trigger: '.pat-redactor',
 
-        init: function($el) {
-            var options = {},
-                data = $el.data();
+        init: function($el, opts) {
+            var poptions = parser.parse($el, opts),
+                options = {};
 
-            // Toolbar buttons
-            if (data.redactorButtons) {
-                options.buttons = data.redactorButtons.split(/[ ,]+/);
+            switch (poptions.toolbarType) {
+                case 'air':
+                    options.air = true;
+                    break;
+                case 'fixed':
+                    options.toolbarFixed = true;
+                    break;
+                default:
+                    break;
             }
 
-            // Allowed, denied tags
-            if (data.redactorAllowedTags) {
-                options.allowedTags = data.redactorAllowedTags.split(/[ ,]+/);
-            } else if (data.redactorDeniedTags) {
-                options.deniedTags = data.redactorDeniedTags.split(/[ ,]+/);
-            }
+            options.buttons = poptions.buttons;
 
-            // Upload paths
-            if (data.redactorFileUpload) {
-                options.fileUpload = data.redactorFileUpload;
-            }
-            if (data.redactorImageUpload) {
-                options.imageUpload = data.redactorImageUpload;
-            }
+            // // Allowed, denied tags
+            // if (data.redactorAllowedTags) {
+            //     options.allowedTags = data.redactorAllowedTags.split(/[ ,]+/);
+            // } else if (data.redactorDeniedTags) {
+            //     options.deniedTags = data.redactorDeniedTags.split(/[ ,]+/);
+            // }
 
-            // Air
-            if (data.redactorAir!==undefined) {
-                options.air = true;
-                if (data.redactorAirButtons) {
-                    options.airButtons = data.redactorAirButtons.split(/[ ,]+/);
-                }
-            }
+            // // Upload paths
+            // if (data.redactorFileUpload) {
+            //     options.fileUpload = data.redactorFileUpload;
+            // }
+            // if (data.redactorImageUpload) {
+            //     options.imageUpload = data.redactorImageUpload;
+            // }
 
-
-            console.log(data);
             $el.redactor(options);
         }
     };
