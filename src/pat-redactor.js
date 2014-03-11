@@ -16,6 +16,7 @@
     var parser = new Parser('redactor');
 
     parser.add_argument('toolbar-type', 'standard', ['standard', 'fixed', 'air']);
+    parser.add_argument('external-toolbar', null);
     parser.add_argument('buttons',
         ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule', 'table'],
         ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
@@ -23,7 +24,6 @@
     parser.add_argument('denied-tags', [], [], true);
     parser.add_argument('file-upload', null);
     parser.add_argument('image-upload', null);
-
     var redactor = {
         name: 'redactor',
         trigger: '.pat-redactor',
@@ -41,6 +41,10 @@
                     break;
                 default:
                     break;
+            }
+
+            if (poptions.externalToolbar) {
+                options.toolbarExternal = poptions.externalToolbar;
             }
 
             options.buttons = poptions.buttons;
