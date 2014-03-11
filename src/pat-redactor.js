@@ -22,10 +22,10 @@
         init: function($el) {
             var options = {},
                 data = $el.data();
-            buttons = data.redactorButtons;
-            if (buttons) {
-                buttons = buttons.split(/[ ,]+/);
-                options.buttons = buttons;
+
+            // Toolbar buttons
+            if (data.redactorButtons) {
+                options.buttons = data.redactorButtons.split(/[ ,]+/);
             }
 
             // Upload paths
@@ -35,6 +35,7 @@
             if (data.redactorImageUpload) {
                 options.imageUpload = data.redactorImageUpload;
             }
+
 
             $el.redactor(options);
         }
