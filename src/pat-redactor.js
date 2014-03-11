@@ -21,6 +21,8 @@
         ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
     parser.add_argument('allowed-tags', [], [], true);
     parser.add_argument('denied-tags', [], [], true);
+    parser.add_argument('file-upload', null);
+    parser.add_argument('image-upload', null);
 
     var redactor = {
         name: 'redactor',
@@ -45,17 +47,17 @@
 
             if (poptions.allowedTags.length>0) {
                 options.allowedTags = poptions.allowedTags;
-            } else if (poptions.denedTags.length>0) {
+            } else if (poptions.deniedTags.length>0) {
                 options.deniedTags = poptions.deniedTags;
             }
 
-            // // Upload paths
-            // if (data.redactorFileUpload) {
-            //     options.fileUpload = data.redactorFileUpload;
-            // }
-            // if (data.redactorImageUpload) {
-            //     options.imageUpload = data.redactorImageUpload;
-            // }
+            if (poptions.fileUpload) {
+                options.fileUpload = poptions.fileUpload;
+            }
+
+            if (poptions.imageUpload) {
+                options.imageUpload = poptions.imageUpload;
+            }
 
             $el.redactor(options);
         }
