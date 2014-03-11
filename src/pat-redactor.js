@@ -28,6 +28,13 @@
                 options.buttons = data.redactorButtons.split(/[ ,]+/);
             }
 
+            // Allowed, denied tags
+            if (data.redactorAllowedTags) {
+                options.allowedTags = data.redactorAllowedTags.split(/[ ,]+/);
+            } else if (data.redactorDeniedTags) {
+                options.deniedTags = data.redactorDeniedTags.split(/[ ,]+/);
+            }
+
             // Upload paths
             if (data.redactorFileUpload) {
                 options.fileUpload = data.redactorFileUpload;
@@ -35,7 +42,6 @@
             if (data.redactorImageUpload) {
                 options.imageUpload = data.redactorImageUpload;
             }
-
 
             $el.redactor(options);
         }
