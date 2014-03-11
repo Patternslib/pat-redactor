@@ -14,12 +14,20 @@
     }
 }(this, function($, registry, Parser) {
     var parser = new Parser("packery");
+
     var redactor = {
         name: "redactor",
         trigger: ".pat-redactor",
 
-        init: function($el, opts) {
-            $el.redactor();
+        init: function($el) {
+            var options = {},
+                data = $el.data();
+            buttons = data.redactorButtons;
+            if (buttons) {
+                buttons = buttons.split(/[ ,]+/);
+                options.buttons = buttons;
+            }
+            $el.redactor(options);
         }
     };
 

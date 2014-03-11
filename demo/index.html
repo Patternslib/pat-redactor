@@ -8,7 +8,13 @@
 <body>
 
   <h1>Redactor pattern demo</h1>
-  <textarea id="content" class="pat-redactor" name="content"></textarea>
+  <textarea id="content" class="pat-redactor">
+  </textarea>
+
+  <textarea id="content2" class="pat-redactor"
+  	data-redactor-buttons="html, formatting, bold, italic">
+  </textarea>
+
   <script type="text/javascript" src="patterns.js"></script>
   <script type="text/javascript" src="../redactor/redactor/redactor.js"></script>
   <script type="text/javascript" src="../dist/bundle.js"></script>
