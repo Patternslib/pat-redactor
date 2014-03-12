@@ -48,6 +48,9 @@
                     break;
                 case 'fixed':
                     options.toolbarFixed = true;
+                    if (poptions.toolbar['fixed-target']) {
+                        options.toolbarFixedTarget = poptions.toolbar['fixed-target'];
+                    }
                     break;
                 default:
                     break;
@@ -55,10 +58,6 @@
 
             if (poptions.toolbar.external) {
                 options.toolbarExternal = poptions.toolbarExternal;
-            }
-
-            if (poptions.toolbar['fixed-target']) {
-                options.toolbarFixedTarget = poptions.toolbarFixedTarget;
             }
 
             options.buttons = poptions.buttons;
