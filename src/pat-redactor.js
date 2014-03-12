@@ -16,7 +16,9 @@
     var parser = new Parser('redactor');
 
     parser.add_argument('toolbar-type', 'standard', ['standard', 'fixed', 'air']);
-    parser.add_argument('external-toolbar', null);
+    parser.add_argument('toolbar-external', null);
+    parser.add_argument('toolbar-fixed-target', null);
+
     parser.add_argument('buttons',
         ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule', 'table'],
         ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
@@ -43,8 +45,12 @@
                     break;
             }
 
-            if (poptions.externalToolbar) {
-                options.toolbarExternal = poptions.externalToolbar;
+            if (poptions.toolbarExternal) {
+                options.toolbarExternal = poptions.toolbarExternal;
+            }
+
+            if (poptions.toolbarFixedTarget) {
+                options.toolbarFixedTarget = poptions.toolbarFixedTarget;
             }
 
             options.buttons = poptions.buttons;
