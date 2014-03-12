@@ -30,6 +30,7 @@
     parser.add_argument('denied-tags', [], [], true);
     parser.add_argument('file-upload', null);
     parser.add_argument('image-upload', null);
+
     var redactor = {
         name: 'redactor',
         trigger: '.pat-redactor',
@@ -38,7 +39,7 @@
             var poptions = parser.parse($el, opts),
                 options = {};
 
-            switch (poptions.toolbarType) {
+            switch (poptions.toolbar.type) {
                 case 'air':
                     options.air = true;
                     if (poptions.airButtons.length !==0) {
@@ -52,11 +53,11 @@
                     break;
             }
 
-            if (poptions.toolbarExternal) {
+            if (poptions.toolbar.external) {
                 options.toolbarExternal = poptions.toolbarExternal;
             }
 
-            if (poptions.toolbarFixedTarget) {
+            if (poptions.toolbar['fixed-target']) {
                 options.toolbarFixedTarget = poptions.toolbarFixedTarget;
             }
 
