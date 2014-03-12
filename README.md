@@ -13,7 +13,6 @@ The following key/values are supported in the `data-pat-redactor` data attribute
 * `toolbar-type` with values being `standard`, `fixed` or `air`
 * `toolbar-external` with a css-selector value pointing to the external toolbar element.
 * `toolbar-fixed-target` with a css-selector pointing to the layer of the toolbar.
-
 * `buttons` as a comma/space separated list of buttons you wish to have available on the editor.
 * `air-buttons` the buttons in the *air* menu by use of if you have specified `air` as the toolbar type.
 * `allowed-tags` or `denied-tags` as a comma/space separated list of allowed/not-allowed html tags.

@@ -22,6 +22,10 @@
     parser.add_argument('buttons',
         ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule', 'table'],
         ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
+
+    parser.add_argument('air-buttons', [],
+        ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
+
     parser.add_argument('allowed-tags', [], [], true);
     parser.add_argument('denied-tags', [], [], true);
     parser.add_argument('file-upload', null);
@@ -37,6 +41,9 @@
             switch (poptions.toolbarType) {
                 case 'air':
                     options.air = true;
+                    if (poptions.airButtons.length !==0) {
+                        options.airButtons = poptions.airButtons;
+                    }
                     break;
                 case 'fixed':
                     options.toolbarFixed = true;
