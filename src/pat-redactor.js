@@ -20,11 +20,11 @@
     parser.add_argument('toolbar-fixed-target', null);
 
     parser.add_argument('buttons',
-        ['html', 'formatting', 'bold', 'italic', 'unorderedlist', 'orderedlist', 'image', 'video', 'link', 'horizontalrule', 'table'],
-        ['formatting', 'bold', 'italic', 'unorderedlist', 'orderedlist', 'image', 'video', 'link', 'horizontalrule'], true);
+        ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule', 'table'],
+        ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
 
     parser.add_argument('air-buttons', [],
-        ['formatting', 'bold', 'italic', 'unorderedlist', 'orderedlist', 'image', 'video', 'link', 'horizontalrule'], true);
+        ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
 
     parser.add_argument('allowed-tags', [], [], true);
     parser.add_argument('denied-tags', [], [], true);
@@ -36,7 +36,8 @@
         trigger: '.pat-redactor',
 
         init: function($el, opts) {
-            var poptions = parser.parse($el, opts),
+            var i,
+                poptions = parser.parse($el, opts),
                 options = {};
 
             switch (poptions.toolbar.type) {
@@ -58,6 +59,11 @@
 
             if (poptions.toolbar.external) {
                 options.toolbarExternal = poptions.toolbar.external;
+            }
+
+            // Remove dashes from button names, per redactor convention
+            for (i=0; i< poptions.buttons.length; i++) {
+                poptions.buttons[i] = poptions.buttons[i].replace('-', '');
             }
 
             options.buttons = poptions.buttons;
