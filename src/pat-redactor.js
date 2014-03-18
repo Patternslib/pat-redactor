@@ -20,11 +20,11 @@
     parser.add_argument('toolbar-fixed-target', null);
 
     parser.add_argument('buttons',
-        ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule', 'table'],
-        ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
+        ['html', 'formatting', 'bold', 'italic', 'unorderedlist', 'orderedlist', 'image', 'video', 'link', 'horizontalrule', 'table'],
+        ['formatting', 'bold', 'italic', 'unorderedlist', 'orderedlist', 'image', 'video', 'link', 'horizontalrule'], true);
 
     parser.add_argument('air-buttons', [],
-        ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
+        ['formatting', 'bold', 'italic', 'unorderedlist', 'orderedlist', 'image', 'video', 'link', 'horizontalrule'], true);
 
     parser.add_argument('allowed-tags', [], [], true);
     parser.add_argument('denied-tags', [], [], true);
