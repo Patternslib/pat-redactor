@@ -57,7 +57,7 @@
             }
 
             if (poptions.toolbar.external) {
-                options.toolbarExternal = poptions.toolbarExternal;
+                options.toolbarExternal = poptions.toolbar.external;
             }
 
             options.buttons = poptions.buttons;
