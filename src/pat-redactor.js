@@ -28,9 +28,9 @@
 
     parser.add_argument('allowed-tags', [], [], true);
     parser.add_argument('denied-tags', [], [], true);
-    parser.add_argument('file-upload', null);
-    parser.add_argument('image-upload', null);
-    parser.add_argument('image-get-json', null);
+    parser.add_argument('fileupload', null);
+    parser.add_argument('imageupload', null);
+    parser.add_argument('imagegetjson', null);
 
     var redactor = {
         name: 'redactor',
