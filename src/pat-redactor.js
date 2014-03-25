@@ -79,11 +79,11 @@
                 options.fileUpload = poptions.fileUpload;
             }
 
-            if (poptions.imageUpload) {
-                options.imageUpload = poptions.imageUpload;
+            if (poptions.imageupload) {
+                options.imageUpload = poptions.imageupload;
             }
-            if (poptions.imageGetJson) {
-                options.imageGetJson = poptions.imageGetJson;
+            if (poptions.imagegetjson) {
+                options.imageGetJson = poptions.imagegetjson;
             }
 
             $el.redactor(options);
