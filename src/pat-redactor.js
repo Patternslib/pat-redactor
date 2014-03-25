@@ -30,6 +30,7 @@
     parser.add_argument('denied-tags', [], [], true);
     parser.add_argument('file-upload', null);
     parser.add_argument('image-upload', null);
+    parser.add_argument('image-get-json', null);
 
     var redactor = {
         name: 'redactor',
@@ -80,6 +81,9 @@
 
             if (poptions.imageUpload) {
                 options.imageUpload = poptions.imageUpload;
+            }
+            if (poptions.imageGetJson) {
+                options.imageGetJson = poptions.imageGetJson;
             }
 
             $el.redactor(options);
