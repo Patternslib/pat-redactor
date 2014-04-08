@@ -39,7 +39,7 @@
         init: function($el, opts) {
             var i,
                 poptions = parser.parse($el, opts),
-                options = {};
+                options = {'rangy': true};
 
             switch (poptions.toolbar.type) {
                 case 'air':
