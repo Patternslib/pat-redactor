@@ -39,7 +39,11 @@
         init: function($el, opts) {
             var i,
                 poptions = parser.parse($el, opts),
-                options = {'rangy': true};
+                options = {};
+
+            if ($.browser.msie && parseInt($.browser.version, 10) === 8) {
+                options.rangy = true;
+            }
 
             switch (poptions.toolbar.type) {
                 case 'air':
