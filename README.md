@@ -1,7 +1,7 @@
-pat-packery
-===========
+pat-redactor
+============
 
-Patternslib plugin for redactor
+A Patternslib plugin for redactor
 
 Usage
 -----
