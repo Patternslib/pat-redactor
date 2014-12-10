@@ -6,13 +6,20 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['jquery', 'pat-registry', 'pat-parser'], function ($, registry, Parser) {
-            return factory($, registry, Parser);
+        define([
+            "jquery",
+            "underscore",
+            "pat-registry",
+            "pat-utils",
+            "pat-parser",
+            "redactor",
+            ], function ($, _, registry, utils, Parser, Redactor) {
+                return factory.apply(this, arguments);
         });
     } else {
-        factory(root.jQuery, root.patterns, root.patterns.Parser);
+        factory(root.jQuery, _, root.patterns, utils, root.patterns.Parser);
     }
-}(this, function($, registry, Parser) {
+}(this, function($, _, registry, utils, Parser, Redactor) {
     var parser = new Parser('redactor');
 
     parser.add_argument('toolbar-type', 'standard', ['standard', 'fixed', 'air']);
@@ -35,6 +42,7 @@
     var redactor = {
         name: 'redactor',
         trigger: '.pat-redactor',
+        plugins: {},
 
         init: function($el, opts) {
             var i,
@@ -61,39 +69,42 @@
                 default:
                     break;
             }
-
             if (poptions.toolbar.external) {
                 options.toolbarExternal = poptions.toolbar.external;
             }
-
             // Remove dashes from button names, per redactor convention
             for (i=0; i< poptions.buttons.length; i++) {
                 poptions.buttons[i] = poptions.buttons[i].replace('-', '');
             }
-
             options.buttons = poptions.buttons;
-
             if (poptions.allowedTags.length>0) {
                 options.allowedTags = poptions.allowedTags;
             } else if (poptions.deniedTags.length>0) {
                 options.deniedTags = poptions.deniedTags;
             }
-
             if (poptions.fileUpload) {
                 options.fileUpload = poptions.fileUpload;
             }
-
             if (poptions.imageupload) {
                 options.imageUpload = poptions.imageupload;
             }
             if (poptions.imagegetjson) {
                 options.imageGetJson = poptions.imagegetjson;
             }
-
+            this.initializePlugins(options);
             $el.redactor(options);
+        },
+
+        registerPlugin: function (name, callback) {
+            this.plugins[name] = callback;
+        },
+
+        initializePlugins: function (options) {
+            _.each(_.keys(this.plugins), $.proxy(function (k) {
+                $.proxy(this.plugins[k], this)(this, options);
+            }, this));
         }
     };
-
     registry.register(redactor);
     return redactor;
 }));
