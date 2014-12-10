@@ -1,5 +1,5 @@
 /**
- * Basic pattern for packery
+ * Pattern for Redactor
  * Copyright 2013-2014 Simplon B.V. - Wichert Akkerman
  */
 
@@ -36,9 +36,15 @@
 
     parser.add_argument('allowed-tags', [], [], true);
     parser.add_argument('denied-tags', [], [], true);
-    parser.add_argument('fileupload', null);
-    parser.add_argument('imageupload', null);
-    parser.add_argument('imagegetjson', null);
+    parser.add_argument('min-height', 0);
+    parser.add_argument('file-upload', undefined);
+    parser.add_argument('image-upload', undefined);
+    parser.add_argument('image-get-json', undefined);
+
+    // XXX: Deprecated
+    parser.add_argument('fileupload', undefined);
+    parser.add_argument('imageupload', undefined);
+    parser.add_argument('imagegetjson', undefined);
 
     var redactor = pluggablePattern.extend({
         name: 'redactor',
@@ -78,26 +84,24 @@
                 poptions.buttons[i] = poptions.buttons[i].replace('-', '');
             }
             options.buttons = poptions.buttons;
-            if (poptions.allowedTags.length>0) {
-                options.allowedTags = poptions.allowedTags;
-            } else if (poptions.deniedTags.length>0) {
-                options.deniedTags = poptions.deniedTags;
-            }
-            if (poptions.fileUpload) {
-                options.fileUpload = poptions.fileUpload;
-            }
+
+            _.extend(options,
+                _.pick(poptions,
+                    ['minHeight', 'fileUpload', 'imageGetJson', 'deniedTags', 'allowedTags']
+                )
+            );
+
+            // XXX Deprecated (see above where parser's arguments are added)
             if (poptions.imageupload) {
                 options.imageUpload = poptions.imageupload;
             }
             if (poptions.imagegetjson) {
                 options.imageGetJson = poptions.imagegetjson;
             }
-            options = this.initializePlugins(options);
-            $el.redactor(options);
+            // Until here
+            $el.redactor(this.initializePlugins(options)[0]);
         }
     });
     registry.register(redactor);
     return redactor;
 }));
-
-
