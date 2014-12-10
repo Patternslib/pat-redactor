@@ -12,14 +12,15 @@
             "pat-registry",
             "pat-utils",
             "pat-parser",
+            "pat-pluggable",
             "redactor",
-            ], function ($, _, registry, utils, Parser, Redactor) {
+            ], function ($, _, registry, utils, Parser, pluggablePattern, Redactor) {
                 return factory.apply(this, arguments);
         });
     } else {
-        factory(root.jQuery, _, root.patterns, utils, root.patterns.Parser);
+        factory(root.jQuery, _, root.patterns, utils, root.patterns.Parser, pluggablePattern, Redactor);
     }
-}(this, function($, _, registry, utils, Parser, Redactor) {
+}(this, function($, _, registry, utils, Parser, pluggablePattern, Redactor) {
     var parser = new Parser('redactor');
 
     parser.add_argument('toolbar-type', 'standard', ['standard', 'fixed', 'air']);
@@ -39,7 +40,7 @@
     parser.add_argument('imageupload', null);
     parser.add_argument('imagegetjson', null);
 
-    var redactor = {
+    var redactor = pluggablePattern.extend({
         name: 'redactor',
         trigger: '.pat-redactor',
         plugins: {},
@@ -91,20 +92,10 @@
             if (poptions.imagegetjson) {
                 options.imageGetJson = poptions.imagegetjson;
             }
-            this.initializePlugins(options);
+            options = this.initializePlugins(options);
             $el.redactor(options);
-        },
-
-        registerPlugin: function (name, callback) {
-            this.plugins[name] = callback;
-        },
-
-        initializePlugins: function (options) {
-            _.each(_.keys(this.plugins), $.proxy(function (k) {
-                $.proxy(this.plugins[k], this)(this, options);
-            }, this));
         }
-    };
+    });
     registry.register(redactor);
     return redactor;
 }));
