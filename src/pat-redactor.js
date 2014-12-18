@@ -26,14 +26,17 @@
     parser.add_argument('toolbar-type', 'standard', ['standard', 'fixed', 'air']);
     parser.add_argument('toolbar-external', null);
     parser.add_argument('toolbar-fixed-target', null);
-
     parser.add_argument('buttons',
         ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'outdent', 'indent','alignment', 'image', 'video', 'link', 'horizontal-rule', 'table'],
-        ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
-
+        ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'],
+        true);
     parser.add_argument('air-buttons', [],
-        ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'], true);
-
+        ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'],
+        true);
+    parser.add_argument('formatting',
+        ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'],
+        ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'],
+        true);
     parser.add_argument('allowed-tags', [], [], true);
     parser.add_argument('denied-tags', [], [], true);
     parser.add_argument('min-height', 0);
@@ -52,10 +55,7 @@
         plugins: {},
 
         init: function($el, opts) {
-            var i,
-                poptions = parser.parse($el, opts),
-                options = {};
-
+            var i, poptions = parser.parse($el, opts), options = {};
             if ($.browser.msie && parseInt($.browser.version, 10) === 8) {
                 options.rangy = true;
             }
@@ -87,10 +87,9 @@
 
             _.extend(options,
                 _.pick(poptions,
-                    ['minHeight', 'fileUpload', 'imageGetJson', 'deniedTags', 'allowedTags']
+                    ['minHeight', 'fileUpload', 'imageGetJson', 'deniedTags', 'allowedTags', 'formatting']
                 )
             );
-
             // XXX Deprecated (see above where parser's arguments are added)
             if (poptions.imageupload) {
                 options.imageUpload = poptions.imageupload;
