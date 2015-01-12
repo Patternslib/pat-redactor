@@ -43,6 +43,7 @@
     parser.add_argument('file-upload', undefined);
     parser.add_argument('image-upload', undefined);
     parser.add_argument('image-get-json', undefined);
+    parser.add_argument('buttonSource', false);
 
     // XXX: Deprecated
     parser.add_argument('fileupload', undefined);
@@ -87,7 +88,7 @@
 
             _.extend(options,
                 _.pick(poptions,
-                    ['minHeight', 'fileUpload', 'imageGetJson', 'deniedTags', 'allowedTags', 'formatting']
+                    ['minHeight', 'fileUpload', 'imageGetJson', 'deniedTags', 'allowedTags', 'formatting', 'buttonSource']
                 )
             );
             // XXX Deprecated (see above where parser's arguments are added)
