@@ -27,8 +27,8 @@
     parser.add_argument('toolbar-external', null);
     parser.add_argument('toolbar-fixed-target', null);
     parser.add_argument('buttons',
-        ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'outdent', 'indent','alignment', 'image', 'video', 'link', 'horizontal-rule', 'table'],
-        ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'],
+        ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'outdent', 'indent', 'alignment', 'image', 'video', 'link', 'horizontal-rule', 'table'],
+        ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'outdent', 'indent', 'alignment', 'image', 'video', 'link', 'horizontal-rule', 'table'],
         true);
     parser.add_argument('air-buttons', [],
         ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'],
