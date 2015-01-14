@@ -88,7 +88,7 @@
             }
             options.buttons = poptions.buttons;
             options.imageResizable = poptions.image.resizable;
-            options.buttonsSource = poptions.showSourceButton;
+            options.buttonSource = poptions.showSourceButton;
             _.extend(options,
                 _.pick(poptions, [
                     'minHeight',
