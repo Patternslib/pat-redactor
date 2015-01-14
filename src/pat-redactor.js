@@ -30,7 +30,8 @@
         ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'outdent', 'indent', 'alignment', 'image', 'video', 'link', 'horizontal-rule', 'table'],
         ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'outdent', 'indent', 'alignment', 'image', 'video', 'link', 'horizontal-rule', 'table'],
         true);
-    parser.add_argument('air-buttons', [],
+    parser.add_argument('air-buttons',
+        [],
         ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'],
         true);
     parser.add_argument('formatting',
@@ -42,8 +43,9 @@
     parser.add_argument('min-height', 0);
     parser.add_argument('file-upload', undefined);
     parser.add_argument('image-upload', undefined);
+    parser.add_argument('image-resizable', true);
     parser.add_argument('image-get-json', undefined);
-    parser.add_argument('buttonSource', false);
+    parser.add_argument('show-source-button', false);
 
     // XXX: Deprecated
     parser.add_argument('fileupload', undefined);
@@ -85,11 +87,17 @@
                 poptions.buttons[i] = poptions.buttons[i].replace('-', '');
             }
             options.buttons = poptions.buttons;
-
+            options.imageResizable = poptions.image.resizable;
+            options.buttonsSource = poptions.showSourceButton;
             _.extend(options,
-                _.pick(poptions,
-                    ['minHeight', 'fileUpload', 'imageGetJson', 'deniedTags', 'allowedTags', 'formatting', 'buttonSource']
-                )
+                _.pick(poptions, [
+                    'minHeight',
+                    'fileUpload',
+                    'imageGetJson',
+                    'deniedTags',
+                    'allowedTags',
+                    'formatting',
+                ])
             );
             // XXX Deprecated (see above where parser's arguments are added)
             if (poptions.imageupload) {
