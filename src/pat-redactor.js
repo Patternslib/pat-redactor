@@ -28,7 +28,7 @@
     parser.add_argument('toolbar-fixed-target', null);
     parser.add_argument('buttons',
         ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'outdent', 'indent', 'alignment', 'image', 'video', 'link', 'horizontal-rule', 'table'],
-        ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'outdent', 'indent', 'alignment', 'image', 'video', 'link', 'horizontal-rule', 'table'],
+        ['html', '|', 'formatting', 'bold', 'italic', 'deleted', 'unordered-list', 'ordered-list', 'outdent', 'indent', 'alignment', 'image', 'video', 'link', 'horizontal-rule', 'table'],
         true);
     parser.add_argument('air-buttons',
         [],
@@ -99,6 +99,7 @@
                     'formatting',
                 ])
             );
+            options['formattingTags'] = options.formatting; // XXX: Some versions of redactor uses formattingTags instead of formatting.
             // XXX Deprecated (see above where parser's arguments are added)
             if (poptions.imageupload) {
                 options.imageUpload = poptions.imageupload;
