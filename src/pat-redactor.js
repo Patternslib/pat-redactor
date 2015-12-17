@@ -107,6 +107,11 @@
             if (poptions.imagegetjson) {
                 options.imageGetJson = poptions.imagegetjson;
             }
+
+            if (typeof RedactorPlugins === 'undefined') window.RedactorPlugins = {};
+            RedactorPlugins = this.plugins;
+            options['plugins'] = _.keys(this.plugins);
+
             // Until here
             $el.redactor(this.initializePlugins(options)[0]);
         }
