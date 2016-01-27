@@ -1,12 +1,21 @@
 {
   "name": "pat-redactor",
-  "version": "0.0.1",
-  "title": "Patternslib plugin for redactor",
+  "version": "2.0.0",
+  "title": "Patternslib plugin for redactor 2",
   "licences": [
     {
       "type": "BSD",
       "URL": "LICENSE"
     }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Patternslib/pat-redactor.git"
+  },
+  "keywords": [
+    "patternslib",
+    "pattern",
+    "redactor"
   ],
   "devDependencies": {
     "bower": "latest",
@@ -17,14 +26,15 @@
     "gulp-bower": "0.0.3",
     "gulp-bower-files": "^0.1.11",
     "streamqueue": "0.0.5",
-    "gulp-rename": "^1.2.0"
+    "gulp-rename": "^1.2.0",
+    "http-server": "^0.7.3"
   },
   "homepage": "https://gitub.com/Patternslib/pat-redactor",
   "maintainers": [
     {
-      "name": "Wichert Akkerman",
-      "email": "wichert@wiggy.net",
-      "url": "http://www.wiggy.net"
+      "name": "Alexander Pilz",
+      "email": "info@syslab.com",
+      "url": "http://www.syslab.com"
     }
   ]
 }

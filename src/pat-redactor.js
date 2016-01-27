@@ -1,6 +1,7 @@
 /**
- * Pattern for Redactor
+ * Pattern for Redactor 2
  * Copyright 2013-2014 Simplon B.V. - Wichert Akkerman
+ * Copyright 2015-2016 Syslab.com Gmbh
  */
 
 (function (root, factory) {
@@ -10,65 +11,77 @@
             "jquery",
             "underscore",
             "pat-registry",
-            "pat-utils",
+            "pat-base",
             "pat-parser",
             "pat-pluggable",
             "redactor",
-            ], function ($, _, registry, utils, Parser, pluggablePattern, Redactor) {
+            "redactor-alignment",
+            // "redactor-clips",
+            // "redactor-codemirror",
+            "redactor-counter",
+            "redactor-definedlinks",
+            "redactor-filemanager",
+            "redactor-fullscreen",
+            "redactor-imagemanager",
+            "redactor-inlinestyle",
+            "redactor-limiter",
+            "redactor-properties",
+            "redactor-source",
+            "redactor-table",
+            // "redactor-textdirection",
+            // "redactor-textexpander",
+            "redactor-video"
+            ], function ($, _, registry, Base, Parser, Redactor) {
                 return factory.apply(this, arguments);
         });
     } else {
-        factory(root.jQuery, _, root.patterns, utils, root.patterns.Parser, pluggablePattern, Redactor);
+        factory(root.jQuery, _, root.patterns, root.patterns.Base, root.patterns.Parser);
     }
-}(this, function($, _, registry, utils, Parser, pluggablePattern, Redactor) {
+}(this, function($, _, registry, Base, Parser) {
     var parser = new Parser('redactor');
 
     parser.add_argument('toolbar-type', 'standard', ['standard', 'fixed', 'air']);
     parser.add_argument('toolbar-external', null);
     parser.add_argument('toolbar-fixed-target', null);
     parser.add_argument('buttons',
-        ['html', 'formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'outdent', 'indent', 'alignment', 'image', 'video', 'link', 'horizontal-rule', 'table'],
-        ['html', '|', 'formatting', 'bold', 'italic', 'deleted', 'unordered-list', 'ordered-list', 'outdent', 'indent', 'alignment', 'image', 'video', 'link', 'horizontal-rule', 'table'],
-        true);
-    parser.add_argument('air-buttons',
-        [],
-        ['formatting', 'bold', 'italic', 'unordered-list', 'ordered-list', 'image', 'video', 'link', 'horizontal-rule'],
+        ['format', 'bold', 'italic', 'deleted', 'lists', 'image', 'file', 'link', 'horizontalrule', 'alignment', 'video', 'html', 'table'],
+        ['format', 'bold', 'italic', 'deleted', 'lists', 'image', 'file', 'link', 'horizontalrule', 'alignment', 'video', 'html', 'table'],
         true);
     parser.add_argument('formatting',
         ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'],
         ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'],
         true);
+    parser.add_argument('plugins', 
+        ['alignment', 'table', 'source', 'fullscreen', 'video', 'imagemanager'],
+        ['inlinestyle', 'source', 'table', 'codemirror', 'alignment', 'fullscreen', 'video', 'imagemanager', 'filemanager', 'properties', 'definedlinks', 'clips', 'limiter', 'textexpander', 'textdirection', 'counter'], 
+        true);
     parser.add_argument('allowed-tags', [], [], true);
     parser.add_argument('denied-tags', [], [], true);
     parser.add_argument('min-height', 0);
     parser.add_argument('file-upload', undefined);
+    parser.add_argument('file-get-json', undefined);
     parser.add_argument('image-upload', undefined);
     parser.add_argument('image-resizable', true);
     parser.add_argument('image-get-json', undefined);
     parser.add_argument('show-source-button', false);
+    parser.add_argument('limit-characters', false);
 
     // XXX: Deprecated
     parser.add_argument('fileupload', undefined);
     parser.add_argument('imageupload', undefined);
     parser.add_argument('imagegetjson', undefined);
 
-    var redactor = pluggablePattern.extend({
+    return Base.extend({
         name: 'redactor',
         trigger: '.pat-redactor',
         plugins: {},
 
         init: function($el, opts) {
             var i, poptions = parser.parse($el, opts), options = {};
-            if ($.browser.msie && parseInt($.browser.version, 10) === 8) {
-                options.rangy = true;
-            }
 
             switch (poptions.toolbar.type) {
                 case 'air':
                     options.air = true;
-                    if (poptions.airButtons.length !==0) {
-                        options.airButtons = poptions.airButtons;
-                    }
                     break;
                 case 'fixed':
                     options.toolbarFixed = true;
@@ -82,10 +95,7 @@
             if (poptions.toolbar.external) {
                 options.toolbarExternal = poptions.toolbar.external;
             }
-            // Remove dashes from button names, per redactor convention
-            for (i=0; i< poptions.buttons.length; i++) {
-                poptions.buttons[i] = poptions.buttons[i].replace('-', '');
-            }
+            options.plugins = poptions.plugins;
             options.buttons = poptions.buttons;
             options.imageResizable = poptions.image.resizable;
             options.buttonSource = poptions.showSourceButton;
@@ -99,23 +109,30 @@
                     'formatting',
                 ])
             );
+            options.limiter = poptions.limitcharacters;
             options['formattingTags'] = options.formatting; // XXX: Some versions of redactor uses formattingTags instead of formatting.
             // XXX Deprecated (see above where parser's arguments are added)
             if (poptions.imageupload) {
                 options.imageUpload = poptions.imageupload;
             }
             if (poptions.imagegetjson) {
-                options.imageGetJson = poptions.imagegetjson;
+                options.imageManagerJson = poptions.imagegetjson;
             }
 
-            if (typeof RedactorPlugins === 'undefined') window.RedactorPlugins = {};
-            RedactorPlugins = this.plugins;
-            options['plugins'] = _.keys(this.plugins);
+            if (poptions.fileupload) {
+                options.fileUpload = poptions.fileupload;
+            }
+            if (poptions.filegetjson) {
+                options.fileManagerJson = poptions.filegetjson;
+            }
+
+            // if (typeof RedactorPlugins === 'undefined') window.RedactorPlugins = {};
+            // RedactorPlugins = this.plugins;
+            // options['plugins'] = _.keys(this.plugins);
 
             // Until here
-            $el.redactor(this.initializePlugins(options)[0]);
+            //$el.redactor(this.initializePlugins(options)[0]);
+            $el.redactor(options);
         }
     });
-    registry.register(redactor);
-    return redactor;
 }));

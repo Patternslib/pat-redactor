@@ -1,3 +1,7 @@
 redactor/
 node_modules/
 dist/
+stamp-bower
+stamp-npm
+src/bower_components
+redactor
