@@ -44,8 +44,8 @@
     parser.add_argument('toolbar-external', null);
     parser.add_argument('toolbar-fixed-target', null);
     parser.add_argument('buttons',
-        ['format', 'bold', 'italic', 'deleted', 'lists', 'link', 'horizontalrule' ],
-        ['format', 'bold', 'italic', 'deleted', 'lists', 'link', 'horizontalrule' ],
+        ['format', 'bold', 'italic', 'deleted', 'lists', 'link', 'horizontalrule', 'image' ],
+        ['format', 'bold', 'italic', 'deleted', 'lists', 'link', 'horizontalrule', 'image' ],
         true);
     parser.add_argument('formatting',
         ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'],
