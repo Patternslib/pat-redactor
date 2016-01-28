@@ -60,16 +60,16 @@
     parser.add_argument('min-height', 0);
     parser.add_argument('file-upload', undefined);
     parser.add_argument('file-get-json', undefined);
-    parser.add_argument('image-upload', undefined);
-    parser.add_argument('image-resizable', true);
-    parser.add_argument('image-get-json', undefined);
+    parser.add_argument('imageupload', 'dummy');
+    parser.add_argument('imageresizable', false);
+    parser.add_argument('imagegetjson', 'dummy');
     parser.add_argument('show-source-button', false);
     parser.add_argument('limit-characters', false);
 
     // XXX: Deprecated
-    parser.add_argument('fileupload', undefined);
-    parser.add_argument('imageupload', undefined);
-    parser.add_argument('imagegetjson', undefined);
+    // parser.add_argument('fileupload', undefined);
+    // parser.add_argument('imageupload', undefined);
+    // parser.add_argument('imagegetjson', undefined);
 
     return Base.extend({
         name: 'redactor',
@@ -97,13 +97,12 @@
             }
             options.plugins = poptions.plugins;
             options.buttons = poptions.buttons;
-            options.imageResizable = poptions.image.resizable;
             options.buttonSource = poptions.showSourceButton;
             _.extend(options,
                 _.pick(poptions, [
                     'minHeight',
-                    'fileUpload',
-                    'imageGetJson',
+                    // 'fileUpload',
+                    // 'imageGetJson',
                     'deniedTags',
                     'allowedTags',
                     'formatting',
@@ -118,13 +117,14 @@
             if (poptions.imagegetjson) {
                 options.imageManagerJson = poptions.imagegetjson;
             }
+            options.imageResizable = poptions.imageresizable;
 
-            if (poptions.fileupload) {
-                options.fileUpload = poptions.fileupload;
-            }
-            if (poptions.filegetjson) {
-                options.fileManagerJson = poptions.filegetjson;
-            }
+            // if (poptions.fileupload) {
+            //     options.fileUpload = poptions.fileUpload;
+            // }
+            // if (poptions.filegetjson) {
+            //     options.fileManagerJson = poptions.fileGetJson;
+            // }
 
             // if (typeof RedactorPlugins === 'undefined') window.RedactorPlugins = {};
             // RedactorPlugins = this.plugins;

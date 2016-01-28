@@ -51,7 +51,23 @@ require.config({
     "shim": {
         "logging": { "exports": "logging" },
         "jqueryui": { "deps": ["jquery"] },
-        "jquery-hotkeys": { "deps": ["jquery"] }
+        "jquery-hotkeys": { "deps": ["jquery"] },
+        "redactor-alignment": {"deps": ["redactor"] },
+        "redactor-clips": {"deps": ["redactor"] },
+        "redactor-codemirror": {"deps": ["redactor"] },
+        "redactor-counter": {"deps": ["redactor"] },
+        "redactor-definedlinks": {"deps": ["redactor"] },
+        "redactor-filemanager": {"deps": ["redactor"] },
+        "redactor-fullscreen": {"deps": ["redactor"] },
+        "redactor-imagemanager": {"deps": ["redactor"] },
+        "redactor-inlinestyle": {"deps": ["redactor"] },
+        "redactor-limiter": {"deps": ["redactor"] },
+        "redactor-properties": {"deps": ["redactor"] },
+        "redactor-source": {"deps": ["redactor"] },
+        "redactor-table": {"deps": ["redactor"] },
+        "redactor-textdirection": {"deps": ["redactor"] },
+        "redactor-textexpand": {"deps": ["redactor"] },
+        "redactor-video": {"deps": ["redactor"] },
     }
 });
 
