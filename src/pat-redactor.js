@@ -88,6 +88,7 @@
             }
             options.buttons = poptions.buttons;
             options.imageResizable = poptions.image.resizable;
+            options.imageUpload = poptions.image.upload;
             options.buttonSource = poptions.showSourceButton;
             _.extend(options,
                 _.pick(poptions, [
