@@ -44,16 +44,16 @@
     parser.add_argument('toolbar-external', null);
     parser.add_argument('toolbar-fixed-target', null);
     parser.add_argument('buttons',
-        ['bufferbuttons', 'format', 'bold', 'italic', 'deleted', 'lists', 'link', 'horizontalrule', 'image' ],
-        ['bufferbuttons', 'format', 'bold', 'italic', 'deleted', 'lists', 'link', 'horizontalrule', 'image' ],
+        ['format', 'bold', 'italic', 'deleted', 'lists', 'link', 'horizontalrule', 'image' ],
+        ['format', 'bold', 'italic', 'deleted', 'lists', 'link', 'horizontalrule', 'image' ],
         true);
     parser.add_argument('formatting',
         ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'],
         ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'],
         true);
     parser.add_argument('plugins', 
-        ['alignment', 'table', 'source', 'fullscreen', 'video', 'imagemanager'],
-        ['inlinestyle', 'source', 'table', 'codemirror', 'alignment', 'fullscreen', 'video', 'imagemanager', 'filemanager', 'properties', 'definedlinks', 'clips', 'limiter', 'textexpander', 'textdirection', 'counter'], 
+        ['bufferbuttons', 'alignment', 'table', 'source', 'fullscreen', 'video', 'imagemanager'],
+        ['bufferbuttons', 'inlinestyle', 'source', 'table', 'codemirror', 'alignment', 'fullscreen', 'video', 'imagemanager', 'filemanager', 'properties', 'definedlinks', 'clips', 'limiter', 'textexpander', 'textdirection', 'counter'], 
         true);
     parser.add_argument('allowed-tags', [], [], true);
     parser.add_argument('denied-tags', [], [], true);
