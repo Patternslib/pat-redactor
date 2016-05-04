@@ -44,8 +44,8 @@
     parser.add_argument('toolbar-external', null);
     parser.add_argument('toolbar-fixed-target', null);
     parser.add_argument('buttons',
-        ['format', 'bold', 'italic', 'deleted', 'lists', 'link', 'horizontalrule', 'image' ],
-        ['format', 'bold', 'italic', 'deleted', 'lists', 'link', 'horizontalrule', 'image' ],
+        ['bufferbuttons', 'format', 'bold', 'italic', 'deleted', 'lists', 'link', 'horizontalrule', 'image' ],
+        ['bufferbuttons', 'format', 'bold', 'italic', 'deleted', 'lists', 'link', 'horizontalrule', 'image' ],
         true);
     parser.add_argument('formatting',
         ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'],
@@ -70,6 +70,20 @@
     // parser.add_argument('fileupload', undefined);
     // parser.add_argument('imageupload', undefined);
     // parser.add_argument('imagegetjson', undefined);
+
+    $.Redactor.prototype.bufferbuttons = function()
+    {
+        return {
+            init: function()
+            {
+                var undo = this.button.addFirst('undo', 'Undo');
+                var redo = this.button.addAfter('undo', 'redo', 'Redo');
+ 
+                this.button.addCallback(undo, this.buffer.undo);
+                this.button.addCallback(redo, this.buffer.redo);
+            }
+        };
+    };
 
     return Base.extend({
         name: 'redactor',
