@@ -26,6 +26,7 @@
             "redactor-inlinestyle",
             "redactor-limiter",
             "redactor-properties",
+            "redactor-romanlisting",
             "redactor-source",
             "redactor-table",
             // "redactor-textdirection",
@@ -53,7 +54,7 @@
         true);
     parser.add_argument('plugins', 
         ['bufferbuttons', 'alignment', 'table', 'source', 'fullscreen', 'video', 'imagemanager'],
-        ['bufferbuttons', 'inlinestyle', 'source', 'table', 'codemirror', 'alignment', 'fullscreen', 'video', 'imagemanager', 'filemanager', 'properties', 'definedlinks', 'clips', 'limiter', 'textexpander', 'textdirection', 'counter'], 
+        ['bufferbuttons', 'inlinestyle', 'source', 'table', 'codemirror', 'alignment', 'fullscreen', 'video', 'imagemanager', 'filemanager', 'properties', 'definedlinks', 'clips', 'limiter', 'textexpander', 'textdirection', 'counter', 'romanlisting'], 
         true);
     parser.add_argument('allowed-tags', [], [], true);
     parser.add_argument('denied-tags', [], [], true);
