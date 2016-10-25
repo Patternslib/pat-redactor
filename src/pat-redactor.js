@@ -133,20 +133,13 @@
                 options.imageManagerJson = poptions.imagegetjson;
             }
             options.imageResizable = poptions.imageresizable;
+            // trigger classic input change on redactors change.
+            options['callbacks'] = {
+                change: function(ev) {
+                    this.$textarea.trigger('input-change')
+                }
+            }   
 
-            // if (poptions.fileupload) {
-            //     options.fileUpload = poptions.fileUpload;
-            // }
-            // if (poptions.filegetjson) {
-            //     options.fileManagerJson = poptions.fileGetJson;
-            // }
-
-            // if (typeof RedactorPlugins === 'undefined') window.RedactorPlugins = {};
-            // RedactorPlugins = this.plugins;
-            // options['plugins'] = _.keys(this.plugins);
-
-            // Until here
-            //$el.redactor(this.initializePlugins(options)[0]);
             $el.redactor(options);
         }
     });
