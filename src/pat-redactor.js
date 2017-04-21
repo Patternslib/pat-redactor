@@ -26,6 +26,7 @@
             "redactor-inlinestyle",
             "redactor-limiter",
             "redactor-properties",
+            "redactor-bufferbuttons",
             "redactor-romanlisting",
             "redactor-source",
             "redactor-table",
@@ -52,9 +53,9 @@
         ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'],
         ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'],
         true);
-    parser.add_argument('plugins', 
+    parser.add_argument('plugins',
         ['bufferbuttons', 'alignment', 'table', 'source', 'fullscreen', 'video', 'imagemanager'],
-        ['bufferbuttons', 'inlinestyle', 'source', 'table', 'codemirror', 'alignment', 'fullscreen', 'video', 'imagemanager', 'filemanager', 'properties', 'definedlinks', 'clips', 'limiter', 'textexpander', 'textdirection', 'counter', 'romanlisting'], 
+        ['bufferbuttons', 'inlinestyle', 'source', 'table', 'codemirror', 'alignment', 'fullscreen', 'video', 'imagemanager', 'filemanager', 'properties', 'definedlinks', 'clips', 'limiter', 'textexpander', 'textdirection', 'counter', 'romanlisting'],
         true);
     parser.add_argument('allowed-tags', [], [], true);
     parser.add_argument('denied-tags', [], [], true);
@@ -79,7 +80,7 @@
             {
                 var undo = this.button.addFirst('undo', 'Undo');
                 var redo = this.button.addAfter('undo', 'redo', 'Redo');
- 
+
                 this.button.addCallback(undo, this.buffer.undo);
                 this.button.addCallback(redo, this.buffer.redo);
             }
@@ -138,7 +139,7 @@
                 change: function(ev) {
                     this.$textarea.trigger('input-change')
                 }
-            }   
+            }
 
             $el.redactor(options);
         }
