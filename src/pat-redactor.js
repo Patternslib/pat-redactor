@@ -92,7 +92,8 @@
         trigger: '.pat-redactor',
         plugins: {},
 
-        init: function($el, opts) {
+        init: function(el, opts) {
+            var $el = $(el);
             var i, poptions = parser.parse($el, opts), options = {};
 
             switch (poptions.toolbar.type) {
