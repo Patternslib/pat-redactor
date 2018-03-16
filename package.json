@@ -1,7 +1,7 @@
 {
   "name": "pat-redactor",
-  "version": "2.0.0",
-  "title": "Patternslib plugin for redactor 2",
+  "version": "3.0.0",
+  "title": "Patternslib plugin for redactor 3",
   "licences": [
     {
       "type": "BSD",
@@ -18,16 +18,6 @@
     "redactor"
   ],
   "devDependencies": {
-    "bower": "latest",
-    "requirejs": "",
-    "gulp": "^3.5.5",
-    "gulp-concat": "^2.1.7",
-    "gulp-uglify": "^0.2.1",
-    "gulp-bower": "0.0.3",
-    "gulp-bower-files": "^0.1.11",
-    "streamqueue": "0.0.5",
-    "gulp-rename": "^1.2.0",
-    "http-server": "^0.7.3"
   },
   "homepage": "https://gitub.com/Patternslib/pat-redactor",
   "maintainers": [

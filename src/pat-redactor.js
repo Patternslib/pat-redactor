@@ -1,6 +1,5 @@
 /**
- * Pattern for Redactor 2
- * Copyright 2013-2014 Simplon B.V. - Wichert Akkerman
+ * Pattern for Redactor 3
  * Copyright 2015-2016 Syslab.com Gmbh
  */
 
@@ -71,19 +70,19 @@
     // parser.add_argument('imageupload', undefined);
     // parser.add_argument('imagegetjson', undefined);
 
-    $.Redactor.prototype.bufferbuttons = function()
-    {
-        return {
-            init: function()
-            {
-                var undo = this.button.addFirst('undo', 'Undo');
-                var redo = this.button.addAfter('undo', 'redo', 'Redo');
+    // $.Redactor.prototype.bufferbuttons = function()
+    // {
+    //     return {
+    //         init: function()
+    //         {
+    //             var undo = this.button.addFirst('undo', 'Undo');
+    //             var redo = this.button.addAfter('undo', 'redo', 'Redo');
 
-                this.button.addCallback(undo, this.buffer.undo);
-                this.button.addCallback(redo, this.buffer.redo);
-            }
-        };
-    };
+    //             this.button.addCallback(undo, this.buffer.undo);
+    //             this.button.addCallback(redo, this.buffer.redo);
+    //         }
+    //     };
+    // };
 
     return Base.extend({
         name: 'redactor',
