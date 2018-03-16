@@ -26,9 +26,7 @@
             "redactor-inlinestyle",
             "redactor-limiter",
             "redactor-properties",
-            "redactor-bufferbuttons",
             "redactor-romanlisting",
-            "redactor-source",
             "redactor-table",
             // "redactor-textdirection",
             // "redactor-textexpander",
@@ -54,8 +52,8 @@
         ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5'],
         true);
     parser.add_argument('plugins',
-        ['bufferbuttons', 'alignment', 'table', 'source', 'fullscreen', 'video', 'imagemanager'],
-        ['bufferbuttons', 'inlinestyle', 'source', 'table', 'codemirror', 'alignment', 'fullscreen', 'video', 'imagemanager', 'filemanager', 'properties', 'definedlinks', 'clips', 'limiter', 'textexpander', 'textdirection', 'counter', 'romanlisting'],
+        ['alignment', 'table', 'source', 'fullscreen', 'video', 'imagemanager'],
+        ['inlinestyle', 'table', 'alignment', 'fullscreen', 'video', 'imagemanager', 'filemanager', 'properties', 'definedlinks', 'clips', 'limiter', 'textexpander', 'textdirection', 'counter', 'romanlisting'],
         true);
     parser.add_argument('allowed-tags', [], [], true);
     parser.add_argument('denied-tags', [], [], true);
