@@ -17,7 +17,22 @@
     "pattern",
     "redactor"
   ],
+  "dependencies": {
+    "patternslib": "https://github.com/patternslib/Patterns"
+  },
   "devDependencies": {
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
+    "expose-loader": "^0.7.5",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2",
+    "webpack-visualizer-plugin": "^0.1.11",
+    "wrapper-webpack-plugin": "^2.1.0"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production webpack --config webpack.config.js --debug --display-error-details",
+    "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js --open"
   },
   "homepage": "https://gitub.com/Patternslib/pat-redactor",
   "maintainers": [

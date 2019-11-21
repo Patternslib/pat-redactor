@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.0 - November 21, 2019
+
+- Use Webpack as build environment.
+  [thet]
+
 
 ## 2.0.0 - January 20, 2016
 
