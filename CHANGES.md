@@ -2,6 +2,9 @@
 
 ## 3.0.0 - November 21, 2019
 
+- Upgrade to Redactor 3.
+  [thet]
+
 - Use Webpack as build environment.
   [thet]
 

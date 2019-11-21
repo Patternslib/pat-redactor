@@ -6,6 +6,7 @@ var baseConfig = require("./node_modules/patternslib/webpack/base.config.js");
 
 const config = merge(baseConfig, {
   mode: "development",
+
   devServer: {
     inline: true,
     contentBase: path.resolve(__dirname, "../"),
@@ -30,7 +31,22 @@ const config = merge(baseConfig, {
       path.resolve(__dirname, "node_modules")
     ],
     alias: {
-      redactor: "../redactor/redactor",  // You need to provide the redactor library one level up.
+      // ATTENTION: You need to provide the redactor library one level up.
+      redactor:                 path.resolve(__dirname,  "../redactor/redactor.js"),
+      "redactor-alignment":     path.resolve(__dirname, "../redactor/_plugins/alignment/alignment.js"),
+      "redactor-clips":         path.resolve(__dirname, "../redactor/_plugins/clips/clips.js"),
+      "redactor-counter":       path.resolve(__dirname, "../redactor/_plugins/counter/counter.js"),
+      "redactor-definedlinks":  path.resolve(__dirname, "../redactor/_plugins/definedlinks/definedlinks.js"),
+      "redactor-filemanager":   path.resolve(__dirname, "../redactor/_plugins/filemanager/filemanager.js"),
+      "redactor-fullscreen":    path.resolve(__dirname, "../redactor/_plugins/fullscreen/fullscreen.js"),
+      "redactor-imagemanager":  path.resolve(__dirname, "../redactor/_plugins/imagemanager/imagemanager.js"),
+      "redactor-inlinestyle":   path.resolve(__dirname, "../redactor/_plugins/inlinestyle/inlinestyle.js"),
+      "redactor-limiter":       path.resolve(__dirname, "../redactor/_plugins/limiter/limiter.js"),
+      "redactor-properties":    path.resolve(__dirname, "../redactor/_plugins/properties/properties.js"),
+      "redactor-table":         path.resolve(__dirname, "../redactor/_plugins/table/table.js"),
+      "redactor-textdirection": path.resolve(__dirname, "../redactor/_plugins/textdirection/textdirection.js"),
+      "redactor-textexpander":  path.resolve(__dirname, "../redactor/_plugins/textexpander/textexpander.js"),
+      "redactor-video":         path.resolve(__dirname, "../redactor/_plugins/video/video.js"),
 
       // Fix paths from patternslib
       "jquery":                 path.resolve(__dirname,  "node_modules/jquery/dist/jquery.js"),

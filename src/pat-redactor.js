@@ -8,13 +8,11 @@
     define([
       "jquery",
       "underscore",
-      "pat-registry",
       "pat-base",
       "pat-parser",
       "redactor",
       "redactor-alignment",
-      // "redactor-clips",
-      // "redactor-codemirror",
+      //"redactor-clips",
       "redactor-counter",
       "redactor-definedlinks",
       "redactor-filemanager",
@@ -23,12 +21,11 @@
       "redactor-inlinestyle",
       "redactor-limiter",
       "redactor-properties",
-      "redactor-romanlisting",
       "redactor-table",
-      // "redactor-textdirection",
-      // "redactor-textexpander",
+      //"redactor-textdirection",
+      //"redactor-textexpander",
       "redactor-video"
-    ], function($, _, registry, Base, Parser, Redactor) {
+    ], function($, _, Base, Parser) {
       return factory.apply(this, arguments);
     });
   } else {
@@ -40,93 +37,90 @@
       root.patterns.Parser
     );
   }
-})(this, function($, _, registry, Base, Parser) {
+})(this, function($, _, Base, Parser) {
   var parser = new Parser("redactor");
 
   parser.add_argument("toolbar-type", "standard", ["standard", "fixed", "air"]);
   parser.add_argument("toolbar-external", null);
   parser.add_argument("toolbar-fixed-target", null);
+
   parser.add_argument(
     "buttons",
     [
+      "html",
+      "undo",
+      "redo",
       "format",
       "bold",
       "italic",
       "deleted",
       "lists",
       "link",
-      "horizontalrule",
+      "line",
       "image"
     ],
     [
-      "format",
       "bold",
-      "italic",
       "deleted",
-      "lists",
+      "file",
+      "format",
+      "html",
+      "image",
+      "indent",
+      "italic",
+      "line",
       "link",
-      "horizontalrule",
-      "image"
+      "lists",
+      "ol",
+      "outdent",
+      "redo",
+      "sub",
+      "sup",
+      "ul",
+      "underline",
+      "undo"
     ],
     true
   );
+
   parser.add_argument(
     "formatting",
     ["p", "blockquote", "pre", "h1", "h2", "h3", "h4", "h5"],
     ["p", "blockquote", "pre", "h1", "h2", "h3", "h4", "h5"],
     true
   );
+
   parser.add_argument(
     "plugins",
-    ["alignment", "table", "source", "fullscreen", "video", "imagemanager"],
+    ["alignment", "table", "fullscreen", "video", "imagemanager"],
     [
-      "inlinestyle",
-      "table",
       "alignment",
-      "fullscreen",
-      "video",
-      "imagemanager",
-      "filemanager",
-      "properties",
-      "definedlinks",
       "clips",
-      "limiter",
-      "textexpander",
-      "textdirection",
       "counter",
-      "romanlisting"
+      "definedlinks",
+      "filemanager",
+      "fullscreen",
+      "imagemanager",
+      "inlinestyle",
+      "limiter",
+      "properties",
+      "table",
+      "textdirection",
+      "textexpander",
+      "video"
     ],
     true
   );
-  parser.add_argument("allowed-tags", [], [], true);
-  parser.add_argument("denied-tags", [], [], true);
+  //parser.add_argument("allowed-tags", [], [], true);
+  //parser.add_argument("denied-tags", [], [], true);
   parser.add_argument("min-height", 0);
   parser.add_argument("file-upload", undefined);
   parser.add_argument("file-get-json", undefined);
   parser.add_argument("imageupload", "dummy");
-  parser.add_argument("imageresizable", false);
   parser.add_argument("imagegetjson", "dummy");
+  parser.add_argument("imageresizable", false);
   parser.add_argument("show-source-button", false);
   parser.add_argument("limit-characters", false);
-
-  // XXX: Deprecated
-  // parser.add_argument('fileupload', undefined);
-  // parser.add_argument('imageupload', undefined);
-  // parser.add_argument('imagegetjson', undefined);
-
-  // $.Redactor.prototype.bufferbuttons = function()
-  // {
-  //     return {
-  //         init: function()
-  //         {
-  //             var undo = this.button.addFirst('undo', 'Undo');
-  //             var redo = this.button.addAfter('undo', 'redo', 'Redo');
-
-  //             this.button.addCallback(undo, this.buffer.undo);
-  //             this.button.addCallback(redo, this.buffer.redo);
-  //         }
-  //     };
-  // };
 
   return Base.extend({
     name: "redactor",
@@ -135,6 +129,8 @@
 
     init: function(el, opts) {
       var $el = $(el);
+      el = el[0]; // get the DOM element.
+
       var i,
         poptions = parser.parse($el, opts),
         options = {};
@@ -152,25 +148,27 @@
         default:
           break;
       }
+
       if (poptions.toolbar.external) {
         options.toolbarExternal = poptions.toolbar.external;
       }
+
       options.plugins = poptions.plugins;
       options.buttons = poptions.buttons;
-      options.buttonSource = poptions.showSourceButton;
+      options.source = poptions.showSourceButton;
+
       _.extend(
         options,
         _.pick(poptions, [
           "minHeight",
-          // 'fileUpload',
-          // 'imageGetJson',
-          "deniedTags",
-          "allowedTags",
-          "formatting"
+          "formatting",
+          //"deniedTags",
+          //"allowedTags",
         ])
       );
-      options.limiter = poptions.limitcharacters;
-      options["formattingTags"] = options.formatting; // XXX: Some versions of redactor uses formattingTags instead of formatting.
+
+      //options.limiter = poptions.limitCharacters;
+
       // XXX Deprecated (see above where parser's arguments are added)
       if (poptions.imageupload) {
         options.imageUpload = poptions.imageupload;
@@ -179,10 +177,11 @@
         options.imageManagerJson = poptions.imagegetjson;
       }
       options.imageResizable = poptions.imageresizable;
+
       // trigger classic input change on redactors change.
-      options["callbacks"] = {
-        change: function(ev) {
-          this.$textarea.trigger("input-change");
+      options.callbacks = {
+        changed: function(html) {
+          $el.trigger("input-change");
         }
       };
 
@@ -190,4 +189,3 @@
     }
   });
 });
-
