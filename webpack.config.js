@@ -16,12 +16,31 @@ const config = merge(baseConfig, {
   },
 
   entry: {
-    bundle: path.resolve(__dirname, "bundle.config.js")
+    bundle: [path.resolve(__dirname, "bundle.config.js"), path.resolve(__dirname, "src", "_pat-redactor.scss")]
   },
 
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname)
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: 'bundle.css',
+						}
+					},
+					'extract-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+    ],
   },
 
   resolve: {

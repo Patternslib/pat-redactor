@@ -1,0 +1,7 @@
+// import all redactor dependencies except those which are not included in pat-redactor.js.
+@import "../../redactor/redactor";
+//@import "../../redactor/_plugins/clips/clips";
+@import "../../redactor/_plugins/filemanager/filemanager";
+//@import "../../redactor/_plugins/handle/handle";
+@import "../../redactor/_plugins/inlinestyle/inlinestyle";
+//@import "../../redactor/_plugins/variable/variable";
