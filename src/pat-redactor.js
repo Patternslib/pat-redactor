@@ -167,7 +167,7 @@
         ])
       );
 
-      //options.limiter = poptions.limitCharacters;
+      options.limiter = poptions.limitCharacters;
 
       // XXX Deprecated (see above where parser's arguments are added)
       if (poptions.imageupload) {
