@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.3.4 - unreleased
+
+- Upgrade to Redactor 3.3.4.
+  [thet]
+
+
 ## 3.0.0 - November 21, 2019
 
 - Upgrade to Redactor 3.
