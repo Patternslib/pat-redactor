@@ -1,5 +1,11 @@
 # Changelog
 
+
+## 4.0.0 - unreleased
+
+- Upgrade to ES6.
+
+
 ## 3.3.4 - unreleased
 
 - Upgrade to Redactor 3.3.4.
