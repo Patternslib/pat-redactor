@@ -22,7 +22,7 @@ The following key/values are supported in the `data-pat-redactor` data attribute
 Installation
 ------------
 
-Download redactor.js and unzip the the file in a directory named `redactor`.
+Download redactor.js and unzip the the file in a directory named `redactor` one level above this directory.
 
 In your console,
 

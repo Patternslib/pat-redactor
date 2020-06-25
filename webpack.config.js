@@ -24,10 +24,14 @@ module.exports = (env) => {
         }
       ],
     },
+    resolve: {
+      alias: {
+        redactor: path.resolve(__dirname, '../redactor'),
+      },
+    },
     devServer: {
       port: "8000",
       host: "0.0.0.0",
     },
   };
 };
-
