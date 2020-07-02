@@ -1,7 +1,7 @@
 import $ from "jquery";
 import _ from "underscore";
-import { base as Base } from "@patternslib/core";
-import { parser as Parser } from "@patternslib/core";
+import Base from "patternslib/src/core/base";
+import Parser from "patternslib/src/core/parser";
 import redactor from "redactor/redactor";
 import "redactor/_plugins/alignment/alignment";
 // import "redactor/_plugins/clips/clips";
