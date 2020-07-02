@@ -18,7 +18,7 @@
     "redactor"
   ],
   "dependencies": {
-    "@patternslib/core": "https://github.com/patternslib/patternslib-core#95e4682d0647f62cd7c4c9b188b82b970cffb3dd"
+    "patternslib": "https://github.com/Patternslib/Patterns#es6"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.9.6",
