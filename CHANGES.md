@@ -4,6 +4,7 @@
 ## 4.0.0 - unreleased
 
 - Upgrade to ES6.
+- Implenent lazy loading for external libraries via dynamic imports.
 
 
 ## 3.3.4 - unreleased

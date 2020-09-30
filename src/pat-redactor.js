@@ -1,22 +1,8 @@
+import "regenerator-runtime/runtime"; // needed for ``await`` support
 import $ from "jquery";
 import _ from "underscore";
 import Base from "patternslib/src/core/base";
 import Parser from "patternslib/src/core/parser";
-import redactor from "redactor/redactor";
-import "redactor/_plugins/alignment/alignment";
-// import "redactor/_plugins/clips/clips";
-// import "redactor/_plugins/textdirection/textdirection";
-import "redactor/_plugins/counter/counter";
-import "redactor/_plugins/definedlinks/definedlinks";
-import "redactor/_plugins/filemanager/filemanager";
-import "redactor/_plugins/fullscreen/fullscreen";
-import "redactor/_plugins/imagemanager/imagemanager";
-import "redactor/_plugins/inlinestyle/inlinestyle";
-import "redactor/_plugins/limiter/limiter";
-import "redactor/_plugins/properties/properties";
-import "redactor/_plugins/table/table";
-// import "redactor/_plugins/textexpander/textexpander";
-import "redactor/_plugins/video/video";
 
 const parser = new Parser("redactor");
 
@@ -107,7 +93,23 @@ export default Base.extend({
     trigger: ".pat-redactor",
     plugins: {},
 
-    init: function (el, opts) {
+    async init(el, opts) {
+        await import("redactor/redactor");
+        await import("redactor/_plugins/alignment/alignment");
+        //await import("redactor/_plugins/clips/clips");
+        //await import("redactor/_plugins/textdirection/textdirection");
+        await import("redactor/_plugins/counter/counter");
+        await import("redactor/_plugins/definedlinks/definedlinks");
+        await import("redactor/_plugins/filemanager/filemanager");
+        await import("redactor/_plugins/fullscreen/fullscreen");
+        await import("redactor/_plugins/imagemanager/imagemanager");
+        await import("redactor/_plugins/inlinestyle/inlinestyle");
+        await import("redactor/_plugins/limiter/limiter");
+        await import("redactor/_plugins/properties/properties");
+        await import("redactor/_plugins/table/table");
+        //await import("redactor/_plugins/textexpander/textexpander");
+        await import("redactor/_plugins/video/video");
+
         var $el = $(el);
         el = el[0]; // get the DOM element.
 
