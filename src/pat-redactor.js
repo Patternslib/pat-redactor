@@ -58,7 +58,7 @@ parser.add_argument(
 
 parser.add_argument(
     "plugins",
-    ["alignment", "table", "fullscreen", "video", "imagemanager"],
+    ["alignment", "fullscreen", "table", "imagemanager", "video"],
     [
         "alignment",
         "clips",
@@ -70,10 +70,12 @@ parser.add_argument(
         "inlinestyle",
         "limiter",
         "properties",
+        "specialchars",
         "table",
         "textdirection",
         "textexpander",
         "video",
+        "widget",
     ],
     true
 );
@@ -96,27 +98,70 @@ export default Base.extend({
     async init(el, opts) {
         let redactor = await import("redactor/redactor");
         redactor = redactor.default;
-        await import("redactor/_plugins/alignment/alignment");
-        //await import("redactor/_plugins/clips/clips");
-        //await import("redactor/_plugins/textdirection/textdirection");
-        await import("redactor/_plugins/counter/counter");
-        await import("redactor/_plugins/definedlinks/definedlinks");
-        await import("redactor/_plugins/filemanager/filemanager");
-        await import("redactor/_plugins/fullscreen/fullscreen");
-        await import("redactor/_plugins/imagemanager/imagemanager");
-        await import("redactor/_plugins/inlinestyle/inlinestyle");
-        await import("redactor/_plugins/limiter/limiter");
-        await import("redactor/_plugins/properties/properties");
-        await import("redactor/_plugins/table/table");
-        //await import("redactor/_plugins/textexpander/textexpander");
-        await import("redactor/_plugins/video/video");
 
-        var $el = $(el);
+        const $el = $(el);
         el = el[0]; // get the DOM element.
 
-        var i,
-            poptions = parser.parse($el, opts),
-            options = {};
+        const poptions = parser.parse($el, opts);
+        const options = {};
+
+        if (poptions.plugins.includes("alignment")) {
+            await import("redactor/_plugins/alignment/alignment");
+        }
+        if (poptions.plugins.includes("clips")) {
+            await import("redactor/_plugins/clips/clips");
+        }
+        if (poptions.plugins.includes("counter")) {
+            await import("redactor/_plugins/counter/counter");
+        }
+        if (poptions.plugins.includes("definedlinks")) {
+            await import("redactor/_plugins/definedlinks/definedlinks");
+        }
+        if (poptions.plugins.includes("filemanager")) {
+            await import("redactor/_plugins/filemanager/filemanager");
+        }
+        if (poptions.plugins.includes("fullscreen")) {
+            await import("redactor/_plugins/fullscreen/fullscreen");
+        }
+        if (poptions.plugins.includes("imagemanager")) {
+            await import("redactor/_plugins/imagemanager/imagemanager");
+        }
+        if (poptions.plugins.includes("inlinestyle")) {
+            await import("redactor/_plugins/inlinestyle/inlinestyle");
+        }
+        if (poptions.plugins.includes("limiter")) {
+            await import("redactor/_plugins/limiter/limiter");
+        }
+        if (poptions.plugins.includes("properties")) {
+            await import("redactor/_plugins/properties/properties");
+        }
+        if (poptions.plugins.includes("specialchars")) {
+            await import("redactor/_plugins/specialchars/specialchars");
+        }
+        if (poptions.plugins.includes("table")) {
+            await import("redactor/_plugins/table/table");
+        }
+        if (poptions.plugins.includes("textdirection")) {
+            await import("redactor/_plugins/textdirection/textdirection");
+        }
+        if (poptions.plugins.includes("textexpander")) {
+            await import("redactor/_plugins/textexpander/textexpander");
+        }
+        if (poptions.plugins.includes("video")) {
+            await import("redactor/_plugins/video/video");
+        }
+        if (poptions.plugins.includes("widget")) {
+            await import("redactor/_plugins/widget/widget");
+        }
+
+        // Plugins not yet included
+        // They need more config or external services
+        // beyondgrammar
+        // fontcolor
+        // fontfamily
+        // fontsize
+        // handle
+        // variable
 
         switch (poptions.toolbar.type) {
             case "air":

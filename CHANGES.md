@@ -5,6 +5,8 @@
 
 - Upgrade to ES6.
 - Implenent lazy loading for external libraries via dynamic imports.
+- Only load plugins if they are configured to be loaded.
+- Add "specialchars" and "widget" plugins.
 
 
 ## 3.3.4 - unreleased
