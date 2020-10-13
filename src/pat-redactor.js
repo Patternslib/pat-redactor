@@ -94,7 +94,8 @@ export default Base.extend({
     plugins: {},
 
     async init(el, opts) {
-        await import("redactor/redactor");
+        let redactor = await import("redactor/redactor");
+        redactor = redactor.default;
         await import("redactor/_plugins/alignment/alignment");
         //await import("redactor/_plugins/clips/clips");
         //await import("redactor/_plugins/textdirection/textdirection");
@@ -167,7 +168,6 @@ export default Base.extend({
                 $el.trigger("input-change");
             },
         };
-
-        $el.redactor(options);
+        redactor(el, options);
     },
 });
