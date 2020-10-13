@@ -35,7 +35,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js --open --env.NODE_ENV=development",
+    "start": "webpack-dev-server --config webpack.config.js --env.NODE_ENV=development",
     "build": "webpack --config webpack.config.js --env.NODE_ENV=production"
   },
   "browserslist": [
