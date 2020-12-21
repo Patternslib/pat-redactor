@@ -90,19 +90,23 @@ parser.add_argument("imageresizable", false);
 parser.add_argument("show-source-button", false);
 parser.add_argument("limit-characters", false);
 
+parser.add_argument("toolbar-external-container", null);
+
+
 export default Base.extend({
     name: "redactor",
     trigger: ".pat-redactor",
     plugins: {},
+    toolbar_observer: null,
+    orig_container: null,
 
-    async init(el, opts) {
+    async init() {
         let redactor = await import("redactor/redactor");
         redactor = redactor.default;
 
-        const $el = $(el);
-        el = el[0]; // get the DOM element.
+        this.orig_container = this.el.parentNode;
 
-        const poptions = parser.parse($el, opts);
+        const poptions = parser.parse(this.el, this.options);
         const options = {};
 
         if (poptions.plugins.includes("alignment")) {
@@ -210,9 +214,34 @@ export default Base.extend({
         // trigger classic input change on redactors change.
         options.callbacks = {
             changed: function (html) {
-                $el.trigger("input-change");
+                $(this.el).trigger("input-change");
             },
         };
-        redactor(el, options);
+
+        const instance = redactor(this.el, options);
+
+        // Refs:
+        // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/MutationObserver
+        // https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord
+        // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe
+
+        debugger;
+        // TODO: temporary set this to the metadata-toolbar for debugging.
+        poptions.toolbar["external-container"] = "#metadata-toolbar";
+        if (poptions.toolbar.external && poptions.toolbar["external-container"]) {
+            this.toolbar_observer = new MutationObserver((mutation_list) => {
+                // TODO: check which ``MutationRecord`` objects are coming in.
+                // None of the time of writing.
+                console.log(mutation_list);
+                this.toolbar_observer.disconnect();
+                // Move textarea out of redactor-box element and put it where it was originally.
+                this.orig_container.appendChild(this.el);
+                this.orig_container.removeChild(document.querySelector(".redactor-box"));
+                this.init();
+            });
+            // TODO: listen on parent of external-container, es #metadata-toolbar itself is replaced.
+            // MutationObserver seems not to get notice of that?
+            this.toolbar_observer.observe(document.querySelector(poptions.toolbar["external-container"]).parentNode, {childList: true});
+        }
     },
 });
