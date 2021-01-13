@@ -79,6 +79,7 @@ parser.add_argument(
     ],
     true
 );
+
 //parser.add_argument("allowed-tags", [], [], true);
 //parser.add_argument("denied-tags", [], [], true);
 parser.add_argument("min-height", 0);
@@ -96,7 +97,7 @@ export default Base.extend({
     plugins: {},
 
     async init(el, opts) {
-        let redactor = await import("redactor/redactor");
+        let redactor = await import("redactor/src/redactor");
         redactor = redactor.default;
 
         const $el = $(el);
@@ -106,52 +107,52 @@ export default Base.extend({
         const options = {};
 
         if (poptions.plugins.includes("alignment")) {
-            await import("redactor/_plugins/alignment/alignment");
+            await import("redactor/src/plugins/alignment/alignment");
         }
         if (poptions.plugins.includes("clips")) {
-            await import("redactor/_plugins/clips/clips");
+            await import("redactor/src/plugins/clips/clips");
         }
         if (poptions.plugins.includes("counter")) {
-            await import("redactor/_plugins/counter/counter");
+            await import("redactor/src/plugins/counter/counter");
         }
         if (poptions.plugins.includes("definedlinks")) {
-            await import("redactor/_plugins/definedlinks/definedlinks");
+            await import("redactor/src/plugins/definedlinks/definedlinks");
         }
         if (poptions.plugins.includes("filemanager")) {
-            await import("redactor/_plugins/filemanager/filemanager");
+            await import("redactor/src/plugins/filemanager/filemanager");
         }
         if (poptions.plugins.includes("fullscreen")) {
-            await import("redactor/_plugins/fullscreen/fullscreen");
+            await import("redactor/src/plugins/fullscreen/fullscreen");
         }
         if (poptions.plugins.includes("imagemanager")) {
-            await import("redactor/_plugins/imagemanager/imagemanager");
+            await import("redactor/src/plugins/imagemanager/imagemanager");
         }
         if (poptions.plugins.includes("inlinestyle")) {
-            await import("redactor/_plugins/inlinestyle/inlinestyle");
+            await import("redactor/src/plugins/inlinestyle/inlinestyle");
         }
         if (poptions.plugins.includes("limiter")) {
-            await import("redactor/_plugins/limiter/limiter");
+            await import("redactor/src/plugins/limiter/limiter");
         }
         if (poptions.plugins.includes("properties")) {
-            await import("redactor/_plugins/properties/properties");
+            await import("redactor/src/plugins/properties/properties");
         }
         if (poptions.plugins.includes("specialchars")) {
-            await import("redactor/_plugins/specialchars/specialchars");
+            await import("redactor/src/plugins/specialchars/specialchars");
         }
         if (poptions.plugins.includes("table")) {
-            await import("redactor/_plugins/table/table");
+            await import("redactor/src/plugins/table/table");
         }
         if (poptions.plugins.includes("textdirection")) {
-            await import("redactor/_plugins/textdirection/textdirection");
+            await import("redactor/src/plugins/textdirection/textdirection");
         }
         if (poptions.plugins.includes("textexpander")) {
-            await import("redactor/_plugins/textexpander/textexpander");
+            await import("redactor/src/plugins/textexpander/textexpander");
         }
         if (poptions.plugins.includes("video")) {
-            await import("redactor/_plugins/video/video");
+            await import("redactor/src/plugins/video/video");
         }
         if (poptions.plugins.includes("widget")) {
-            await import("redactor/_plugins/widget/widget");
+            await import("redactor/src/plugins/widget/widget");
         }
 
         // Plugins not yet included

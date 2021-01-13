@@ -7,6 +7,8 @@
 - Implenent lazy loading for external libraries via dynamic imports.
 - Only load plugins if they are configured to be loaded.
 - Add "specialchars" and "widget" plugins.
+- Adapt to new redactor package structure.
+  All redactor files are in src/ subfolder.
 
 
 ## 3.3.4 - unreleased
