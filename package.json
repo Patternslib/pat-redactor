@@ -1,14 +1,9 @@
 {
-    "name": "pat-PATTERN_TEMPLATE",
+    "name": "pat-redactor",
     "version": "4.0.0",
-    "description": "A pattern for PATTERN_TEMPLATE",
-    "author": {
-        "name": "Syslab GesmbH",
-        "email": "dev@syslab.com"
-    },
+    "description": "A pattern for redactor",
     "license": "MIT",
-    "homepage": "https://gitub.com/patternslib/pat-PATTERN_TEMPLATE",
-    "main": "./src/PATTERN_TEMPLATE.js",
+    "main": "./src/pat-redactor.js",
     "dependencies": {
         "@patternslib/patternslib": "4"
     },
@@ -69,5 +64,14 @@
     },
     "publishConfig": {
         "access": "public"
+    },
+    "author": {
+        "name": "Syslab GesmbH",
+        "email": "dev@syslab.com"
+    },
+    "homepage": "https://github.com/patternslib/pat-redactor",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/patternslib/pat-redactor.git"
     }
 }

@@ -12,6 +12,7 @@ module.exports = async (env, argv) => {
 
     // Correct moment alias
     config.resolve.alias.moment = path.resolve(__dirname, "node_modules/moment"); // prettier-ignore
+    config.resolve.alias.redactor: path.resolve(__dirname, '../redactor');
 
     if (argv.mode === "production") {
         // Also create minified bundles along with the non-minified ones.

@@ -1,8 +1,7 @@
 import "regenerator-runtime/runtime"; // needed for ``await`` support
-import $ from "jquery";
 import _ from "underscore";
-import Base from "patternslib/src/core/base";
-import Parser from "patternslib/src/core/parser";
+import Base from "@patternslib/patternslib/src/core/base";
+import Parser from "@patternslib/patternslib/src/core/parser";
 
 const parser = new Parser("redactor");
 
@@ -96,14 +95,10 @@ export default Base.extend({
     trigger: ".pat-redactor",
     plugins: {},
 
-    async init(el, opts) {
-        let redactor = await import("redactor/src/redactor");
-        redactor = redactor.default;
+    async init() {
+        const redactor = (await import("redactor/src/redactor")).default;
 
-        const $el = $(el);
-        el = el[0]; // get the DOM element.
-
-        const poptions = parser.parse($el, opts);
+        const poptions = parser.parse(this.el, this.options);
         const options = {};
 
         if (poptions.plugins.includes("alignment")) {
@@ -171,8 +166,7 @@ export default Base.extend({
             case "fixed":
                 options.toolbarFixed = true;
                 if (poptions.toolbar["fixed-target"]) {
-                    options.toolbarFixedTarget =
-                        poptions.toolbar["fixed-target"];
+                    options.toolbarFixedTarget = poptions.toolbar["fixed-target"];
                 }
                 break;
             default:
@@ -210,10 +204,10 @@ export default Base.extend({
 
         // trigger classic input change on redactors change.
         options.callbacks = {
-            changed: function (html) {
-                $el.trigger("input-change");
+            changed: function () {
+                this.$el.trigger("input-change");
             },
         };
-        redactor(el, options);
+        redactor(this.el, options);
     },
 });
