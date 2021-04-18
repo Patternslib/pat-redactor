@@ -1,37 +1,23 @@
+process.traceDeprecation = true;
 const path = require("path");
-const webpack = require("webpack");
+const patternslib_config = require("@patternslib/patternslib/webpack/webpack.config.js");
 
+module.exports = async (env, argv) => {
+    const config = patternslib_config(env, argv);
 
-module.exports = (env) => {
-  return {
-    entry: {
-      bundle: "./bundle-config.js",
-    },
-    externals: [
-      {
-        window: "window",
-      },
-    ],
-    output: {
-      filename: "[name].js",
-    },
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules\/(?!(patternslib)\/).*/,
-          loader: "babel-loader",
-        }
-      ],
-    },
-    resolve: {
-      alias: {
-        redactor: path.resolve(__dirname, '../redactor'),
-      },
-    },
-    devServer: {
-      port: "8000",
-      host: "0.0.0.0",
-    },
-  };
+    config.entry = {
+        bundle: path.resolve(__dirname, "bundle-config.js"),
+    };
+    config.output.path = path.resolve(__dirname, "dist/");
+
+    // Correct moment alias
+    config.resolve.alias.moment = path.resolve(__dirname, "node_modules/moment"); // prettier-ignore
+
+    if (argv.mode === "production") {
+        // Also create minified bundles along with the non-minified ones.
+        config.entry["bundle.min"] = path.resolve(__dirname, "bundle-config.js"); // prettier-ignore
+        config.output.chunkFilename = "chunks/[name].[contenthash].min.js";
+    }
+
+    return config;
 };
