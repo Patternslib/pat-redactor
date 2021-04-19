@@ -7,6 +7,7 @@ module.exports = {
     },
     moduleNameMapper: {
         "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+        "^redactor/(.*)$": "<rootDir>/../../redactor/$1", // propertitary redactor library needs to be a level up from pat-redactor repo.
     },
     transformIgnorePatterns: ["/node_modules/(?!.*patternslib/*).+\\.[t|j]sx?$"],
 };
