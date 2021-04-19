@@ -96,6 +96,10 @@ export default Base.extend({
     plugins: {},
 
     async init() {
+        if (window.__patternslib_import_styles) {
+            import("redactor/src/redactor.css");
+        }
+
         const redactor = (await import("redactor/src/redactor")).default;
 
         const poptions = parser.parse(this.el, this.options);
@@ -105,6 +109,9 @@ export default Base.extend({
             await import("redactor/src/plugins/alignment/alignment");
         }
         if (poptions.plugins.includes("clips")) {
+            if (window.__patternslib_import_styles) {
+                import("redactor/src/plugins/clips/clips.css");
+            }
             await import("redactor/src/plugins/clips/clips");
         }
         if (poptions.plugins.includes("counter")) {
@@ -114,6 +121,9 @@ export default Base.extend({
             await import("redactor/src/plugins/definedlinks/definedlinks");
         }
         if (poptions.plugins.includes("filemanager")) {
+            if (window.__patternslib_import_styles) {
+                import("redactor/src/plugins/filemanager/filemanager.css");
+            }
             await import("redactor/src/plugins/filemanager/filemanager");
         }
         if (poptions.plugins.includes("fullscreen")) {
@@ -123,6 +133,9 @@ export default Base.extend({
             await import("redactor/src/plugins/imagemanager/imagemanager");
         }
         if (poptions.plugins.includes("inlinestyle")) {
+            if (window.__patternslib_import_styles) {
+                import("redactor/src/plugins/inlinestyle/inlinestyle.css");
+            }
             await import("redactor/src/plugins/inlinestyle/inlinestyle");
         }
         if (poptions.plugins.includes("limiter")) {
