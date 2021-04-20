@@ -1,3 +1,18 @@
+## [5.0.0](https://github.com/patternslib/pat-redactor/compare/0.0.2...5.0.0) (2021-04-20)
+
+
+### Features
+
+* Import styles in JavaScript and remove the _pat-redactor.scss file. ([1e1e53e](https://github.com/patternslib/pat-redactor/commit/1e1e53e4f70da188d28a3e9c1ac409226214b997))
+
+
+### Maintenance
+
+* Add basic tests. ([199bc43](https://github.com/patternslib/pat-redactor/commit/199bc436b8d548f10b94d2212d67a9026fc1d550))
+* Remove release-web and add note about Redactor beiing a commercial product and cannot be included. ([a4b098c](https://github.com/patternslib/pat-redactor/commit/a4b098c8dbdeff12c842d26a5df07a3476b058f2))
+* Upgrade to Patternslib v4 final - redactor customizations. ([eab86a3](https://github.com/patternslib/pat-redactor/commit/eab86a3b6e98f7662595add1a483c7aac016bfd1))
+* Upgrade to Patternslib v4 final. ([433b2a2](https://github.com/patternslib/pat-redactor/commit/433b2a2e2f27f676f52015f8007d0afc109df7d9))
+
 # Changelog
 
 
