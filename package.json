@@ -1,5 +1,5 @@
 {
-    "name": "pat-redactor",
+    "name": "@patternslib/pat-redactor",
     "version": "4.0.0",
     "description": "A pattern for redactor",
     "license": "MIT",
