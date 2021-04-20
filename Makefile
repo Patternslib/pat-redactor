@@ -40,39 +40,42 @@ bundle: stamp-yarn
 	$(YARN) run build
 
 
-release-web: clean-dist bundle
-	@echo name is $(PACKAGE_NAME)
-	@echo version is $(PACKAGE_VERSION)
-	tar -czf ./$(PACKAGE_NAME)-$(PACKAGE_VERSION).tar.gz dist --transform s/dist/$(PACKAGE_NAME)-$(PACKAGE_VERSION)/
-	git clone -n git@github.com:Patternslib/Patterns-releases.git --depth 1 ./dist/Patterns-releases
-	mkdir ./dist/Patterns-releases/releases
-	mv ./$(PACKAGE_NAME)-$(PACKAGE_VERSION).tar.gz ./dist/Patterns-releases/releases/
-	cd ./dist/Patterns-releases && \
-		git reset HEAD && \
-		git add ./releases/$(PACKAGE_NAME)-$(PACKAGE_VERSION).tar.gz && \
-		git commit -m"Add release $(PACKAGE_NAME)-$(PACKAGE_VERSION).tar.gz" && \
-		git push
+# release-web: clean-dist bundle
+# 	@echo name is $(PACKAGE_NAME)
+# 	@echo version is $(PACKAGE_VERSION)
+# 	tar -czf ./$(PACKAGE_NAME)-$(PACKAGE_VERSION).tar.gz dist --transform s/dist/$(PACKAGE_NAME)-$(PACKAGE_VERSION)/
+# 	git clone -n git@github.com:Patternslib/Patterns-releases.git --depth 1 ./dist/Patterns-releases
+# 	mkdir ./dist/Patterns-releases/releases
+# 	mv ./$(PACKAGE_NAME)-$(PACKAGE_VERSION).tar.gz ./dist/Patterns-releases/releases/
+# 	cd ./dist/Patterns-releases && \
+# 		git reset HEAD && \
+# 		git add ./releases/$(PACKAGE_NAME)-$(PACKAGE_VERSION).tar.gz && \
+# 		git commit -m"Add release $(PACKAGE_NAME)-$(PACKAGE_VERSION).tar.gz" && \
+# 		git push
 
 
 .PHONY: release-major
 release-major: check
 	npx release-it major --dry-run --ci && \
-		npx release-it major --ci  && \
-		make release-web
+		npx release-it major --ci
+		# npx release-it major --ci  && \
+		# make release-web
 
 
 .PHONY: release-minor
 release-minor: check
 	npx release-it minor --dry-run --ci && \
-		npx release-it minor --ci  && \
-		make release-web
+		npx release-it minor --ci
+		# npx release-it minor --ci  && \
+		# make release-web
 
 
 .PHONY: release-patch
 release-patch: check
 	npx release-it --dry-run --ci && \
-		npx release-it --ci  && \
-		make release-web
+		npx release-it --ci
+		# npx release-it --ci  && \
+		# make release-web
 
 
 .PHONY: serve

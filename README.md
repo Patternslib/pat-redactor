@@ -1,7 +1,11 @@
 pat-redactor
 ============
 
-A Patternslib plugin for redactor
+A Patternslib plugin for redactor.
+
+:warning: If you want to build and use this Pattern you need a [Redactor 3](https://imperavi.com/redactor/log/) release a folder above the checkout of this repository.
+Redactor is a properitary WYSIWYG editor for the web with a commercial license which cannot be included here.
+
 
 Usage
 -----
@@ -18,6 +22,7 @@ The following key/values are supported in the `data-pat-redactor` data attribute
 * `allowed-tags` or `denied-tags` as a comma/space separated list of allowed/not-allowed html tags.
 * `file-upload` as a url where file uploads are going to be posted to.
 * `image-upload` as a url where image uploads are going to be posted to.
+
 
 Installation
 ------------
