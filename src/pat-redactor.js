@@ -217,7 +217,7 @@ export default Base.extend({
 
         // trigger classic input change on redactors change.
         options.callbacks = {
-            changed: function () {
+            changed: () => {
                 this.$el.trigger("input-change");
             },
         };
