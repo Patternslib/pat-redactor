@@ -1,3 +1,19 @@
+### [5.0.1](https://github.com/patternslib/pat-redactor/compare/5.0.0...5.0.1) (2021-04-23)
+
+
+### Bug Fixes
+
+* Fix this reference and do throw the input-chaged event after updates. ([c9484e9](https://github.com/patternslib/pat-redactor/commit/c9484e930e1a2411f3b97eb6f8e0d9e033aed5f1))
+* **Webpack:** Fix alias for redactor. ([e59624e](https://github.com/patternslib/pat-redactor/commit/e59624e64b81140504205d27864dda7fec4cc166))
+
+
+### Maintenance
+
+* **make release-patch:** Add missing patch for patch level releases. ([360ca15](https://github.com/patternslib/pat-redactor/commit/360ca15266114bea56085d650bd6d292b1dcc0d4))
+* **Release:** Remove the release-web target. Only Patternslib releases are pushed to Patterns-releases on Github. ([d8430b5](https://github.com/patternslib/pat-redactor/commit/d8430b510449d4779100f78d13e905e76494362d))
+* **Release process:** Do not include the release commit in the changelog. ([0e5d47a](https://github.com/patternslib/pat-redactor/commit/0e5d47aecab602d33e7216d8763a3485c93470cd))
+* Fix demo to include correct bundle. ([d799c4c](https://github.com/patternslib/pat-redactor/commit/d799c4c60addb8a2ea26566c20b36d1d34ebbdb8))
+
 ## [5.0.0](https://github.com/patternslib/pat-redactor/compare/0.0.2...5.0.0) (2021-04-20)
 
 
