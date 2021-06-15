@@ -1,6 +1,6 @@
 {
     "name": "@patternslib/pat-redactor",
-    "version": "5.0.1",
+    "version": "5.1.0",
     "description": "A pattern for redactor",
     "license": "MIT",
     "main": "./src/pat-redactor.js",

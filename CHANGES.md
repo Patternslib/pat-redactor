@@ -1,3 +1,14 @@
+## [5.1.0](https://github.com/patternslib/pat-redactor/compare/5.0.1...5.1.0) (2021-06-15)
+
+
+### Maintenance
+
+* Test updates after jest upgrade. ([ad06883](https://github.com/patternslib/pat-redactor/commit/ad06883b8e7f379170b351fe40ee56cc6c2641b9))
+* **dependencies:** Depend on Patternslib v4.4.0. ([76428f3](https://github.com/patternslib/pat-redactor/commit/76428f33188f5748bcc7125b47bd53ba2f015bca))
+* **dependencies:** Upgrade dependencies on minor+patch level. ([011b8d1](https://github.com/patternslib/pat-redactor/commit/011b8d1130e04c129e6124116d36bca9f8f2bfde))
+* **webpack:** Adapt start script to recent dependency changes. ([f716a4b](https://github.com/patternslib/pat-redactor/commit/f716a4b1e96bd01c7895ba43d7761cd4b1c714c4))
+* **webpack:** Simplify webpack. ([5bbcb79](https://github.com/patternslib/pat-redactor/commit/5bbcb794c5873a3504237c1d60c8aeefa150f2c0))
+
 ### [5.0.1](https://github.com/patternslib/pat-redactor/compare/5.0.0...5.0.1) (2021-04-23)
 
 
