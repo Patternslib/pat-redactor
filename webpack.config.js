@@ -10,15 +10,7 @@ module.exports = async (env, argv) => {
     };
     config.output.path = path.resolve(__dirname, "dist/");
 
-    // Correct moment alias
-    config.resolve.alias.moment = path.resolve(__dirname, "node_modules/moment"); // prettier-ignore
     config.resolve.alias.redactor = path.resolve(__dirname, "../redactor");
-
-    if (argv.mode === "production") {
-        // Also create minified bundles along with the non-minified ones.
-        config.entry["bundle.min"] = path.resolve(__dirname, "bundle-config.js"); // prettier-ignore
-        config.output.chunkFilename = "chunks/[name].[contenthash].min.js";
-    }
 
     return config;
 };
