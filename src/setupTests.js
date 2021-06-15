@@ -7,6 +7,3 @@ import "@testing-library/jest-dom/extend-expect";
 // need this for async/await in tests
 import "core-js/stable";
 import "regenerator-runtime/runtime";
-
-import jquery from "jquery";
-window.$ = window.jquery = jquery;

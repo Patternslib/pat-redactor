@@ -7,7 +7,7 @@ describe("pat-redactor", () => {
         document.body.innerHTML = "";
     });
 
-    it("is initialized correctly", async (done) => {
+    it("is initialized correctly", async () => {
         document.body.innerHTML = `
           <textarea class="pat-redactor"></textarea>
         `;
@@ -16,7 +16,5 @@ describe("pat-redactor", () => {
         await utils.timeout(1);
 
         expect(document.querySelectorAll(".redactor-toolbar").length).toBe(1);
-
-        done();
     });
 });
