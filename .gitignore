@@ -1,5 +1,8 @@
-redactor/
-node_modules/
+.DS_Store
+.env
 dist/
+node_modules/
 stamp-yarn
+stats.json
+yarn-error.log
 yarn.lock
