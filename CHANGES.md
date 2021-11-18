@@ -1,3 +1,20 @@
+## [6.0.0](https://github.com/patternslib/pat-redactor/compare/5.1.0...6.0.0) (2021-11-18)
+
+
+### Breaking Changes
+
+* Upgrade to Webpack 5. ([74c93e7](https://github.com/patternslib/pat-redactor/commit/74c93e7f63bb63930b91720fe5183d091cb3caff))
+
+
+
+### Maintenance
+
+* **build:** Extend Patternslib release-it config file. ([fdc212b](https://github.com/patternslib/pat-redactor/commit/fdc212b72a068ff96dc343fdf26248eb0edafe74))
+
+* **build:** Release on GitHub releases. ([e7be8a9](https://github.com/patternslib/pat-redactor/commit/e7be8a9bdb107637baa28bd48ae0cc457df42ae9))
+
+* Upgrade up to minor versions. ([4353c62](https://github.com/patternslib/pat-redactor/commit/4353c62591102891a622de0624bf7d8efbb0f196))
+
 ## [5.1.0](https://github.com/patternslib/pat-redactor/compare/5.0.1...5.1.0) (2021-06-15)
 
 
