@@ -1,3 +1,16 @@
+### [6.0.1](https://github.com/patternslib/pat-redactor/compare/6.0.0...6.0.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* Add missing dependency underscore. ([63450c8](https://github.com/patternslib/pat-redactor/commit/63450c84ffa4b7d087b37509aee12f1436f0a1d2))
+
+
+
+### Maintenance
+
+* **webpack:** Configure devServer static directory. ([10a6470](https://github.com/patternslib/pat-redactor/commit/10a64704ba3ccce6b52521eaf6c2a9774972a31e))
+
 ## [6.0.0](https://github.com/patternslib/pat-redactor/compare/5.1.0...6.0.0) (2021-11-18)
 
 
