@@ -5,8 +5,10 @@
     "license": "MIT",
     "main": "./src/pat-redactor.js",
     "dependencies": {
-        "@patternslib/patternslib": "^6.0.1",
         "underscore": "^1.13.2"
+    },
+    "peerDependencies": {
+        "@patternslib/patternslib": "*"
     },
     "devDependencies": {
         "@babel/core": "^7.16.0",
