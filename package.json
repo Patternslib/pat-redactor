@@ -58,6 +58,9 @@
             "not op_mini all"
         ]
     },
+    "keywords": [
+        "patternslib"
+    ],
     "publishConfig": {
         "access": "public"
     },
