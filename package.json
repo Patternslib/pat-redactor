@@ -5,50 +5,18 @@
     "license": "MIT",
     "main": "./src/pat-redactor.js",
     "dependencies": {
-        "@patternslib/patternslib": "^6.0.1",
         "underscore": "^1.13.2"
     },
+    "peerDependencies": {
+        "@patternslib/patternslib": "*"
+    },
     "devDependencies": {
-        "@babel/core": "^7.16.0",
-        "@babel/eslint-parser": "^7.16.3",
-        "@babel/plugin-proposal-optional-chaining": "^7.16.0",
-        "@babel/preset-env": "^7.16.0",
-        "@commitlint/cli": "^15.0.0",
-        "@commitlint/config-conventional": "^15.0.0",
-        "@release-it/conventional-changelog": "^3.3.0",
-        "@testing-library/jest-dom": "^5.15.0",
-        "babel-loader": "^8.2.3",
-        "copy-webpack-plugin": "^10.0.0",
-        "core-js": "3.19.1",
-        "css-loader": "^6.5.0",
-        "eslint": "^8.2.0",
-        "eslint-config-prettier": "^8.3.0",
-        "expose-loader": "^3.0.0",
-        "husky": "^7.0.4",
-        "identity-obj-proxy": "^3.0.0",
-        "imports-loader": "^3.1.0",
-        "inspectpack": "^4.7.1",
-        "jest": "^27.3.1",
-        "jest-watch-typeahead": "^1.0.0",
-        "prettier": "^2.4.1",
-        "regenerator-runtime": "^0.13.9",
-        "release-it": "^14.11.7",
-        "sass": "^1.43.4",
-        "sass-loader": "^12.3.0",
-        "style-loader": "^3.3.0",
-        "terser-webpack-plugin": "^5.2.5",
-        "timezone-mock": "^1.2.2",
-        "webpack": "^5.64.1",
-        "webpack-bundle-analyzer": "^4.4.2",
-        "webpack-cli": "^4.9.1",
-        "webpack-dev-server": "^4.5.0",
-        "webpack-modernizr-loader": "^5.0.0",
-        "whybundled": "^2.0.0",
-        "yarn": "^1.22.17"
+        "@patternslib/dev": "^2.0.0"
     },
     "scripts": {
         "start": "NODE_ENV=development webpack serve --config webpack.config.js",
         "build": "NODE_ENV=production webpack --config webpack.config.js",
+        "build:dev": "NODE_ENV=development webpack --config webpack.config.js",
         "build:stats": "NODE_ENV=production webpack --config webpack.config.js --json > stats.json",
         "test": "jest"
     },
@@ -59,6 +27,9 @@
             "not op_mini all"
         ]
     },
+    "keywords": [
+        "patternslib"
+    ],
     "publishConfig": {
         "access": "public"
     },

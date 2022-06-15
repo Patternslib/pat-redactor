@@ -1,14 +1,6 @@
-module.exports = {
-    rootDir: "./src",
-    setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
-    watchPlugins: ["jest-watch-typeahead/filename", "jest-watch-typeahead/testname"],
-    transform: {
-        "^.+\\.[t|j]sx?$": "babel-jest",
-    },
-    moduleNameMapper: {
-        "\\.(css|less|sass|scss)$": "identity-obj-proxy",
-        "^redactor/(.*)$": "<rootDir>/../../redactor/$1", // propertitary redactor library needs to be a level up from pat-redactor repo.
-    },
-    testEnvironment: "jsdom",
-    transformIgnorePatterns: ["/node_modules/(?!.*patternslib/*).+\\.[t|j]sx?$"],
-};
+const defaults = require("@patternslib/dev/jest.config.js");
+
+// propertitary redactor library needs to be a level up from pat-redactor repo.
+defaults.moduleNameMapper["^redactor/(.*)$"] = "../../redactor/$1";
+
+module.exports = defaults;
