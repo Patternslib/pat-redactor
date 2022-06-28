@@ -1,3 +1,69 @@
+# Changelog
+
+
+
+## [7.0.0](https://github.com/patternslib/pat-redactor/compare/6.0.1...7.0.0) (2022-06-28)
+
+
+### Features
+
+
+* **Build:** Build module federation enabled bundles. ([a099226](https://github.com/patternslib/pat-redactor/commit/a099226e486676eca482339133cf173c1a3e1f39))
+
+
+### Breaking Changes
+
+
+* Depend on @patternslib/dev and extend config from there. ([f369a75](https://github.com/patternslib/pat-redactor/commit/f369a75d86a95d8da6201286a42d281e3d3c6911))
+
+* Extend babel config from @patternslib/dev. ([458d3c7](https://github.com/patternslib/pat-redactor/commit/458d3c7705339d1883feb834473945633cb9c63b))
+
+* Extend commitlint config from @patternslib/dev. ([e72f8af](https://github.com/patternslib/pat-redactor/commit/e72f8afc3f22469d2b8b11f6937a130f1f8191d0))
+
+* Extend eslint config from @patternslib/dev. ([d5bc9a0](https://github.com/patternslib/pat-redactor/commit/d5bc9a06396e990cbc799b2062f55a3739f807bc))
+
+* Extend jest config from @patternslib/dev. ([8f2eae0](https://github.com/patternslib/pat-redactor/commit/8f2eae06854c35cb2e441893e52b7ad3aa4c1cbb))
+
+* Extend Makefile from @patternslib/dev. ([2ad82e9](https://github.com/patternslib/pat-redactor/commit/2ad82e9c928407db1346ea6a8f5b15dfadc69494))
+
+* Extend prettier config from @patternslib/dev. ([9cf1a7e](https://github.com/patternslib/pat-redactor/commit/9cf1a7eb39856342d9d147be58dfe6d4308fc88e))
+
+* Extend release-it config from @patternslib/dev. ([1584d75](https://github.com/patternslib/pat-redactor/commit/1584d7581023345bcb31ddd34a29ec1b3af2ec86))
+
+* Extend webpack config from @patternslib/dev. ([3428c99](https://github.com/patternslib/pat-redactor/commit/3428c999e0404e9c15e822cdb59c67d3720e5edb))
+
+
+### Maintenance
+
+
+* @patternslib/patternslib needs to be installed. Adding to devDependencies to avoid version clashes with other packages depending on it. ([bc2704b](https://github.com/patternslib/pat-redactor/commit/bc2704bc8d9b4118629ce24a10e4d386fd2e3120))
+
+* Do not build a bundle and do not upload any assets to GitHub due to redactor being proprietary software. ([2f4265b](https://github.com/patternslib/pat-redactor/commit/2f4265bf6f34d82ee9d9023c13a2024ca9f7bebd))
+
+* Upgrade to @patternslib/dev 2.2.0 and adapt module federation config. ([5fb5e08](https://github.com/patternslib/pat-redactor/commit/5fb5e08ff8d8a1ab94e6f61adc47ecddcbf13652))
+
+* Upgrade underscore to 1.13.4. ([dea494d](https://github.com/patternslib/pat-redactor/commit/dea494dc4e59530765e3f92ebe694e94940eee19))
+
+* **build:** Add build:dev script to package.json to create a unminified development build. ([7a0db7f](https://github.com/patternslib/pat-redactor/commit/7a0db7fa1a572ce41971e0cbef4bcb2d20a7e14a))
+
+* **Build:** @patternslib/patternslib as peerDependency. ([9af550f](https://github.com/patternslib/pat-redactor/commit/9af550fa060cfca71a84d0b54d54422f42efc490))Move @patternslib/patternslib dependency to peerDependencies and set to any version to avoid version conflicts when this package is a dependency of another Patternslib based package.
+
+* **Build:** Add @patternslib/patternslib also to devDependencies so that we get it installed. ([cdf63bb](https://github.com/patternslib/pat-redactor/commit/cdf63bbf9c3126d7d99190e35d412a1a671dace6))
+
+* **Build:** Add keyword "patternslib" to package.json. ([79b4cb9](https://github.com/patternslib/pat-redactor/commit/79b4cb934774c543a71856783f34c64ff8781e49))
+
+* **Build:** Extend jest.config.js from Patternslib and reuse their setupTests file too. ([da62bf8](https://github.com/patternslib/pat-redactor/commit/da62bf8a87d87c6f66a2b3c52f99fe85a395f9e1))
+
+* **Build:** Keep yarn.lock in repository. ([71299a8](https://github.com/patternslib/pat-redactor/commit/71299a84ca1f96886ff22e5e63b1929c8d8135b1))
+
+* **Build:** Makefile - Allow OTP when publishing to npm, build bundles and publish them on GitHub, add pre-release targets. ([af4526a](https://github.com/patternslib/pat-redactor/commit/af4526a0d9ce651e0594a2b634f66e24c70f643e))
+
+* **Build:** Remove dependency regenerator-runtime except from test setup. The async/await runtime handling is already built-in in current Babel. ([7eb89b6](https://github.com/patternslib/pat-redactor/commit/7eb89b64f971c696dc38652e0d0694449555e4c3))
+
+* **Build:** Update GitHub actions setup. ([d027474](https://github.com/patternslib/pat-redactor/commit/d0274744fc18799fce932702bbc8a68af5119412))
+
+* **Build:** Upgrade and cleanup dependencies. ([96b7bcc](https://github.com/patternslib/pat-redactor/commit/96b7bcc75ce1a8a91b0eeffd9469888183f22022))
+
 ### [6.0.1](https://github.com/patternslib/pat-redactor/compare/6.0.0...6.0.1) (2022-03-24)
 
 
@@ -69,8 +135,6 @@
 * Remove release-web and add note about Redactor beiing a commercial product and cannot be included. ([a4b098c](https://github.com/patternslib/pat-redactor/commit/a4b098c8dbdeff12c842d26a5df07a3476b058f2))
 * Upgrade to Patternslib v4 final - redactor customizations. ([eab86a3](https://github.com/patternslib/pat-redactor/commit/eab86a3b6e98f7662595add1a483c7aac016bfd1))
 * Upgrade to Patternslib v4 final. ([433b2a2](https://github.com/patternslib/pat-redactor/commit/433b2a2e2f27f676f52015f8007d0afc109df7d9))
-
-# Changelog
 
 
 ## 4.0.0 - unreleased
