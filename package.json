@@ -7,11 +7,9 @@
     "dependencies": {
         "underscore": "^1.13.2"
     },
-    "peerDependencies": {
-        "@patternslib/patternslib": "*"
-    },
     "devDependencies": {
-        "@patternslib/dev": "^2.2.0"
+        "@patternslib/dev": "^2.2.0",
+        "@patternslib/patternslib": "*"
     },
     "scripts": {
         "start": "NODE_ENV=development webpack serve --config webpack.config.js",
